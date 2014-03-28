@@ -1,0 +1,52 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+	<h:body>
+		<h:form id="form">
+			<p:outputPanel id="menuu">
+				<p:commandLink actionListener="#{userBean.editUser}"
+					update=":contentContainer">
+					<h:outputText value="Edit" />
+				</p:commandLink>
+				<p:commandButton styleClass="searchBtn" value="Search"
+					actionListener="#{userBean.searchResults}"
+					update=":contentContainer">
+					<p:inputText id="searchId" styleClass="searchBtn"
+						value="#{userBean.searchId}" />
+				</p:commandButton>
+
+				<p:growl id="growl" showDetail="true" />
+				<p:dataTable id="lazyDataTable" var="user"
+					value="#{userBean.userList}" editable="true" selectionMode="single"
+					rowKey="#{user.id}" paginator="true"
+					paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+					tableStyleClass="test" selection="#{userBean.user}"
+					rowsPerPageTemplate="5,10,15" rows="15">
+
+					<p:ajax event="rowSelect" />
+
+					<p:column headerText="UserName" filterBy="login"
+						filterMatchMode="contains">
+			            #{user.login}
+			        </p:column>
+
+					<p:column headerText="Email">
+			            #{user.email}
+			        </p:column>
+
+					<p:column headerText="FirstName" filterBy="firstname"
+						filterMatchMode="contains">
+			            #{user.firstname}
+			        </p:column>
+
+					<p:column headerText="LastName" filterBy="lastname"
+						filterMatchMode="contains">
+			            #{user.lastname}
+			        </p:column>
+				</p:dataTable>
+			</p:outputPanel>
+		</h:form>
+	</h:body>
+</ui:composition>

@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://java.sun.com/jsp/jstl/core">
+<body>
+	<ui:composition>
+		<p:outputPanel id="menuPanel">
+			<h:form>
+				<c:if test="#{orderBean.sessionExist}">
+					<div class="titleimage">
+						<p:graphicImage value="../../images/headerimage.png"></p:graphicImage>
+						<h1>Welcome to Order Management System !</h1>
+					</div>
+					<div id="header">
+						<div id="menu">
+							<p:commandLink actionListener="#{orderBean.cancel}"
+								update=":contentContainer, :menuPanel">
+								<h:outputText value="ORDERS"
+									style="color: #FFFFFF;font-size: 14px;" />
+							</p:commandLink>
+							<p:commandLink actionListener="#{orderBean.cancel}"
+								update=":contentContainer, :menuPanel" disabled="true">
+								<h:outputText value="MENU" styleClass="menuus" />
+							</p:commandLink>
+							<p:commandLink actionListener="#{orderBean.cancel}"
+								update=":contentContainer, :menuPanel" disabled="true">
+								<h:outputText value="CATEGORY" styleClass="menuus" />
+							</p:commandLink>
+							<p:commandLink actionListener="#{orderBean.cancel}"
+								update=":contentContainer, :menuPanel" disabled="true">
+								<h:outputText value="SETTINGS" styleClass="menuus" />
+							</p:commandLink>
+						</div>
+						<div id="logout">
+							<p:commandLink actionListener="#{orderBean.logout}"
+								update=":contentContainer, :menuPanel">
+								<h:outputText value="Logout"
+									style="color: #FFFFFF;font-size: 14px;" />
+							</p:commandLink>
+						</div>
+					</div>
+				</c:if>
+			</h:form>
+		</p:outputPanel>
+	</ui:composition>
+</body>
+</html>
