@@ -10,6 +10,10 @@ import org.springframework.stereotype.Component;
 
 @Component("loginValidator")
 public class LoginValidator implements Validator {
+	
+	/**
+     * This method has been used for validating the input login fields.
+     */
 	@Override
 	public void validate(FacesContext arg0, UIComponent arg1, Object value)
 			throws ValidatorException {

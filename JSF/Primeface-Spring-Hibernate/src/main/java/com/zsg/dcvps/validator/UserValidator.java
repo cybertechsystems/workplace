@@ -20,6 +20,9 @@ public class UserValidator implements Validator {
 	@Autowired
 	private UserBean userBean;
 
+	/**
+     * This method has been used for validating the input user name fields.
+     */
 	@Override
 	public void validate(FacesContext arg0, UIComponent arg1, Object value)
 			throws ValidatorException {

@@ -15,6 +15,12 @@ import com.zsg.dcvps.dao.DetailDao;
 import com.zsg.dcvps.entity.Details;
 import com.zsg.dcvps.util.LazySorter;
 
+/**
+ * This Class has been used for the implementation such as loading the 
+ * details records, getting the selected row items.. 
+ * @author Cybertech1
+ *
+ */
 public class DetailsDataModel extends LazyDataModel<Details> implements Serializable{
 	 
     private List<Details> detailList;
@@ -30,6 +36,10 @@ public class DetailsDataModel extends LazyDataModel<Details> implements Serializ
         this.detailDao = detailDao;
     }
  
+    /**
+     * This method has been used for loading the details records corresponding to the
+     * selected check id.
+     */
     @Override
     public List<Details> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String,String> filters) {
     	detailList = detailDao.findWithCheckId("Details.findDetails", first, first + pageSize, checkID);
@@ -47,6 +57,10 @@ public class DetailsDataModel extends LazyDataModel<Details> implements Serializ
         return details.getDetailId().toString();
     }
  
+	/**
+	 * This method has been used for getting the corresponding data for the 
+	 * selected row.
+	 */
     @Override
     public Details getRowData(String rowKey) {
         if(detailList == null)

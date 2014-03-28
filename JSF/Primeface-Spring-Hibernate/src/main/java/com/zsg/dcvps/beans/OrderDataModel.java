@@ -12,6 +12,12 @@ import com.zsg.dcvps.dao.OrderDAO;
 import com.zsg.dcvps.entity.Orders;
 import com.zsg.dcvps.util.LazySorter;
 
+/**
+ * This Class has been used for the implementation such as loading the 
+ * Orders records, getting the selected row items.. 
+ * @author Cybertech1
+ *
+ */
 public class OrderDataModel extends LazyDataModel<Orders> implements Serializable{
 	 
     private List<Orders> orderList;
@@ -21,6 +27,10 @@ public class OrderDataModel extends LazyDataModel<Orders> implements Serializabl
         this.orderDao = orderDao;
     }
  
+    /**
+     * This method has been used for loading all the order records after 
+     * getting from the database.
+     */
     @Override
     public List<Orders> load(int first, int pageSize, String sortField, SortOrder sortOrder, Map<String,String> filters) {
     	orderList = orderDao.findWithNamedQuery("Orders.findAllOrders", first, first + pageSize);
@@ -38,6 +48,10 @@ public class OrderDataModel extends LazyDataModel<Orders> implements Serializabl
         return order.getCheckId().toString();
     }
  
+	/**
+	 * This method has been used for getting the corresponding data for the 
+	 * selected row.
+	 */
     @Override
     public Orders getRowData(String rowKey) {
         if(orderList == null)

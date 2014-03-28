@@ -41,6 +41,10 @@ public class UserService implements IUserService, Serializable {
         addressDao.update(address);
     }
     
+    /**
+     * This method has been used for finding the corresponding user from the database based on
+     * the input user name.
+     */
     @Override
     @Transactional(readOnly = true)
     public User findUser(String username) {
@@ -62,6 +66,10 @@ public class UserService implements IUserService, Serializable {
         return user;
     }
     
+    /**
+     * This method has been used for getting the user details for the corresponding 
+     * user name and password from the database.
+     */
     @Override
     @Transactional(readOnly = true)
     public User findUserDetails(String username, String password) {
@@ -78,6 +86,9 @@ public class UserService implements IUserService, Serializable {
         return user;
     }
 
+    /**
+     * This method has been used for checking if the user is available in the database.
+     */
     @Override
     @Transactional(readOnly = true)
     public boolean isUsernameAvailable(String username) {
@@ -85,6 +96,10 @@ public class UserService implements IUserService, Serializable {
         return userList==null || userList.isEmpty();
     }
 
+    /**
+     * This method has been used for checking if the email has been already present
+     * in the database or not.
+     */
     @Override
     @Transactional(readOnly = true)
     public boolean isEmailAvailable(String email) {
@@ -92,14 +107,22 @@ public class UserService implements IUserService, Serializable {
         return userList==null || userList.isEmpty();
     }
 
-	@Override
+	
+    /**
+     * This method has been used for getting all the users from the database.
+     */
+    @Override
 	@Transactional(readOnly = true)
 	public List<User> getUsers() {
 		List<User> userList = userDao.findAll("User.findAllUsers", new Object[]{});
 		return userList;
 	}
 
-	@Override
+	/**
+	 * This method has been used for getting the user records based on the input 
+	 * parameters.
+	 */
+    @Override
 	public List<User> searchResults(String searchId1, String searchId2, String searchId3) {
 		List<User> searchList = userDao.findAll("User.searchResults", new Object[]{"%"+searchId1+"%", "%"+searchId2+"%", "%"+searchId3+"%"});
 		return searchList;

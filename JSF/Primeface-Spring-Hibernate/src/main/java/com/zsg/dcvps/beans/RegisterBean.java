@@ -37,6 +37,10 @@ public class RegisterBean implements Serializable {
 	@Autowired
 	private IUserService userService;
 
+	/**
+	 * This method is used for saving the User entity into the database and on successful 
+	 * the welcome page will be returned.
+	 */
 	public void save() {
 		LOG.debug("save...");
 		try {
@@ -63,6 +67,11 @@ public class RegisterBean implements Serializable {
 		}
 	}
 
+	/**
+	 * This method is used for validating the login credentials and getting the user details
+	 * from the database to login. On successful login the order page will be returned.
+	 * 
+	 */
 	public void login() {
 		LOG.debug("login...");
 		try {
@@ -94,6 +103,10 @@ public class RegisterBean implements Serializable {
 		}
 	}
 	
+	/**
+	 * This method has been used for validating the login details.
+	 * @throws ValidatorException
+	 */
 	private void loginValidate() throws ValidatorException{
 		FacesMessage message = new FacesMessage();
 		if ((getUser().getLogin() == null || getUser().getLogin().trim().isEmpty()) && 
@@ -120,6 +133,10 @@ public class RegisterBean implements Serializable {
 		}
 	}
 
+	/**
+	 * This method has been used for validating the login details before saving into DB.
+	 * @throws ValidatorException
+	 */
 	private void validate() throws ValidatorException {
 		if (getUser().getLogin() == null || getUser().getLogin().trim().isEmpty()) {
 			FacesMessage message = new FacesMessage();

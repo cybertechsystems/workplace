@@ -43,23 +43,10 @@ public class UserBean implements Serializable {
 		this.searchId = searchId;
 	}
 
-	/*private List<User> searchList;
-	public List<User> getSearchList() {
-		if (getSearchId() == null) {
-			return userList;
-		} else {
-			if (searchList == null) {
-				searchList = new ArrayList<User>();
-				searchList.addAll(userService.searchResults(getSearchId()));
-			}
-		}
-		return searchList;
-	}
-
-	public void setSearchList(List<User> searchList) {
-		this.searchList = searchList;
-	}*/
-
+	/**
+	 * This method has been used for getting the list of users from the database.
+	 * @return
+	 */
 	public List<User> getUserList() {
 		if (userList == null) {
 			userList = new ArrayList<User>();
@@ -95,6 +82,10 @@ public class UserBean implements Serializable {
 		return getUser() != null && getUser().getId() != null;
 	}
 
+	/**
+	 * This method has been used for getting the user details from the database for
+	 * editing.
+	 */
 	public void editUser() {
 		user = userService.findUser(user.getLogin());
 		registerBean.setUser(user);
@@ -102,6 +93,10 @@ public class UserBean implements Serializable {
 		page = "../user/profile";
 	}
 
+	/**
+	 * This method has been used for ending the current session and returns to the
+	 * login page.
+	 */
 	public void logout() {
 		HttpSession session = Util.getSession();
 		session.invalidate();
@@ -109,6 +104,10 @@ public class UserBean implements Serializable {
 		page = "../component/login";
 	}
 	
+	/**
+	 * This method has been used for searching the candidate based on the 
+	 * input value.
+	 */
 	public void searchResults() {
 		if (searchId != null && !searchId.isEmpty()) {
 			userList = userService.searchResults(searchId, searchId, searchId);

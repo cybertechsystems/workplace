@@ -7,6 +7,12 @@ import javax.faces.context.FacesContext;
 import javax.servlet.http.HttpSession;
 
 public class Util {
+	/**
+	 * This method has been used for encrypting the given password.
+	 * @param password
+	 * @return
+	 * @throws Exception
+	 */
 	public static String getMD5Password(String password) throws Exception {
 		byte[] bytesOfMessage = password.getBytes("UTF-8");
 		MessageDigest md = MessageDigest.getInstance("MD5");

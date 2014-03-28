@@ -14,6 +14,10 @@ import com.zsg.dcvps.util.Util;
 
 @Component("passwordValidator")
 public class PasswordValidator implements Validator{
+	
+	/**
+     * This method has been used for validating the input password fields.
+     */
     @Override
 	public void validate(FacesContext context, UIComponent component,
 			Object value) throws ValidatorException {

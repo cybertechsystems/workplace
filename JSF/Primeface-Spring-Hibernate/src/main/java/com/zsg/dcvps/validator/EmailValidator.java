@@ -33,6 +33,9 @@ public class EmailValidator implements Validator{
           pattern = Pattern.compile(EMAIL_PATTERN);
     }
  
+    /**
+     * This method has been used for validating the input email fields.
+     */
     @Override
 	public void validate(FacesContext context, UIComponent component,
 			Object value) throws ValidatorException {
