@@ -1,0 +1,47 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="../dashboard.xhtml">
+		<ui:define name="content">
+			<p:panel id="messageListPanel" header="Message List" styleClass="outer-panel">
+				<h:form prependId="false">
+					<p:growl id="msgs" showDetail="true" />  
+					<h:panelGrid columns="3">
+						<p:commandButton id="composeButton" action="manageMail" value="Compose Mail" ajax="false"/>
+						<p:commandButton id="download" action="#{messageList.print}" 
+    							value="Export" ajax="false"/>
+						
+					</h:panelGrid>
+				</h:form>
+				<h:form prependId="false" id = "form"> 
+					<p:dataTable id="datatable" var="mail" value="#{messageList.mailList}"
+						rowKey="#{mail.sendDate}"  
+                 		selection="#{messageList.mail}" selectionMode="single">
+						<p:column headerText="Sent Date">  
+	            			#{mail.sendDate}
+	        			</p:column>  
+	        			<p:column headerText="Subject">   
+	            			#{mail.message} 
+	        			</p:column>
+	        			<p:column headerText="TO">  
+	            			#{mail.toAddress} 
+	        			</p:column>
+	        			                		
+                 		 <f:facet name="footer">  
+				            <p:commandButton id="deleteButton" value="Delete"  
+			                    update="datatable" action ="#{messageList.delete}">
+			                </p:commandButton>  
+				        </f:facet>   
+			  			
+				    </p:dataTable>  
+				</h:form> 
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

@@ -1,0 +1,15 @@
+.grid {
+	width: 700px;
+}
+.label{
+	float: left;
+    width: 165px;
+}
+
+.value{
+	width:450px;
+}
+
+.value input{
+	width:600px;
+}

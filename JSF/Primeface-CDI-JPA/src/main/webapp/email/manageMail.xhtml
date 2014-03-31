@@ -1,0 +1,66 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="../dashboard.xhtml">
+
+		<ui:define name="content">
+			<h:form prependId="false" id="form">
+			<p:growl showDetail="true" /> 
+			<p:panel id="manageMail" header="Compose Mail" styleClass="outer-panel">
+				<p:messages globalOnly="false"/>
+				<p:outputPanel id="editDialog">
+					<h:panelGrid columns="2" columnClasses="label,value"
+						styleClass="grid">
+						
+						<h:outputLabel for="subject" value="Subject" />
+						<h:inputText id="subject" value="#{messageList.mail.message}">
+						</h:inputText>
+						<h:outputLabel for="toAddress" value="To" />
+						<h:inputText id="toAddress" value="#{messageList.mail.toAddress}">
+						</h:inputText>
+						
+						<h:outputLabel for="select" value="Select Template" />
+						<h:selectOneMenu id="templates" value="#{manageTemplate.templateId}"
+							style="width:147px;"
+							onchange="editorHtml.editor.focus();
+								setTimeout(function(){
+									editorHtml.editor.execCommand('inserthtml',value, false);
+	                          	}, 0);
+	                          	return false;"
+								immediate="true">
+							<f:selectItem itemLabel="Select One" itemValue="" />
+							<f:selectItems value="#{manageTemplate.templates}" var="template"
+								itemLabel="#{template.name}" itemValue="#{template.content}" />
+						</h:selectOneMenu>
+						
+						<h:outputLabel for="txtArea" value="Content" />
+						<ui:include src="/email/editor.xhtml">
+						 	<ui:param name="editorValue" value="#{messageList.mail.content}" />
+   						</ui:include>
+						
+						<h:outputText />
+						<h:panelGrid columns="2">
+							<p:commandButton id="sendButton" action="#{messageList.sendMail}" 
+    							value="Send" ajax="false"/>
+    						<p:commandButton onclick="dlg.show();"	value="Click here to Attach" style="width:215px;"/>
+						</h:panelGrid>
+					</h:panelGrid>
+					</p:outputPanel>
+				</p:panel>
+			</h:form>
+			<p:dialog header="File Upload" widgetVar="dlg" resizable="false">  
+				<h:form prependId="false" id="uploadForm" enctype="multipart/form-data">
+					<h:panelGrid columns="3" styleClass="panelGridClass" title="Bulk Upload" summary="Bulk Upload" id="uploadPanel">
+						<p:fileUpload fileUploadListener="#{messageList.handleFileUpload}" mode="advanced" update="uploadMsgs" sizeLimit="1000000" allowTypes="csv,txt,xls"  />
+					</h:panelGrid>
+				</h:form>
+			</p:dialog>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>
