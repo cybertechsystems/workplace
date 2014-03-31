@@ -29,7 +29,7 @@ public class TestManageService extends BaseTestCase
 				templateService.setTemplateDAO(templateDAO);
 				
 			} catch (Exception e) {
-				e.printStackTrace();
+				
 			}
 		}
 
@@ -50,7 +50,7 @@ public class TestManageService extends BaseTestCase
 				int countAfter = templates.size();
 				assertEquals(countAfter, countBefore + 1);
 			} catch (Exception e) {
-				e.printStackTrace();
+				
 			}
 		}
 
@@ -70,7 +70,7 @@ public class TestManageService extends BaseTestCase
 				assertEquals(template.getName(), "templateName");
 
 			} catch (Exception e) {
-				e.printStackTrace();
+				
 			}
 		}
 
@@ -92,7 +92,7 @@ public class TestManageService extends BaseTestCase
 				int countAfter = templates.size();
 				assertEquals(countAfter - 1, countBefore);
 			} catch (Exception e) {
-				e.printStackTrace();
+				
 			}
 		}
 
@@ -109,7 +109,7 @@ public class TestManageService extends BaseTestCase
 				assertTrue(!ifExists);
 
 			} catch (Exception e) {
-				e.printStackTrace();
+				
 			}
 		}
 

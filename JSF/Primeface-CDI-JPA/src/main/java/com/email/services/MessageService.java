@@ -5,7 +5,6 @@ import java.util.List;
 import net.sf.jasperreports.engine.JasperPrint;
 
 import com.email.dao.MessageDAO;
-import com.email.dao.TemplateDAO;
 import com.email.model.ComposeMail;
 
 public interface MessageService {

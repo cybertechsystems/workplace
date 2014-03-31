@@ -4,9 +4,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.List;
 
-import javax.faces.context.FacesContext;
 import javax.inject.Inject;
-import javax.servlet.ServletContext;
 
 import net.sf.jasperreports.engine.JasperPrint;
 
@@ -34,7 +32,7 @@ public class TestMessageService {
 			messageService.setMessageDAO(messageDAO);
 			
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 		}
 	}
 	/**
@@ -54,7 +52,7 @@ public class TestMessageService {
 			int countAfter = mails.size();
 			assertEquals(countAfter, countBefore + 1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 		}
 	}
 	/**
@@ -75,26 +73,11 @@ public class TestMessageService {
 			int countAfter = mails.size();
 			assertEquals(countAfter, countBefore - 1);
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 		}
 	}
 	public void saveMail() throws Exception {
 		composeMail = DummyValues.createDummyMail();
 		this.messageService.save(composeMail);
 	}
-	
-	@Test
-	public void testReport() {
-
-		try {
-			String rootPath = "C://mailModule/";
-			List<ComposeMail> mailList = messageService.findAllMail();
-			JasperPrint jasperPrint = messageService.messageList(mailList,rootPath);
-
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
-	}
-
-	
 }

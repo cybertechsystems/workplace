@@ -1,0 +1,40 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:body>
+		<ui:composition template="../dashboard.xhtml">
+			<ui:define name="content">
+				<h:form prependId="false" id="form">
+					<p:growl showDetail="true" /> 
+					<p:panel id="manageMail" header="Data Components" styleClass="outer-panel">
+						<p:outputPanel id="editDialog">
+							<h:panelGrid columns="2" columnClasses="label,value"
+							 styleClass="grid">
+								<h:outputLabel for="model" value="Model" />
+								<h:inputText id="model" value="#{tableBean.data.model}"/>
+								
+								<h:outputLabel for="manufacturer" value="Manufacturer" />
+								<h:inputText id="manufacturer" value="#{tableBean.data.manufacturer}"/>
+								
+								<h:outputLabel for="colour" value="Colour" />
+								<h:inputText id="colour" value="#{tableBean.data.colour}"/>
+								
+								<h:outputLabel for="year" value="Year" />
+								<h:inputText id="year" value="#{tableBean.data.year}"/>
+								<h:outputText />
+								<h:panelGrid columns="2">
+									<p:commandButton id="sendButton" action="#{tableBean.save}" 
+		    							value="Save" ajax="false"/>
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:panel>
+				</h:form>
+			</ui:define>
+		</ui:composition>
+	</h:body>
+</html>

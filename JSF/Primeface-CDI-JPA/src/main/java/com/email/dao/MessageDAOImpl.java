@@ -1,14 +1,17 @@
 package com.email.dao;
 
+import static com.email.util.Constants.ERROR_COMPOSE_MAIL_DELETE;
+import static com.email.util.Constants.ERROR_COMPOSE_MAIL_SAVE;
+
 import java.util.List;
 
-import javax.ejb.Stateless;
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 
 import org.apache.log4j.Logger;
 
 import com.email.model.ComposeMail;
+import com.email.util.ApplicationException;
 
 @Named("messageDAO")
 public class MessageDAOImpl extends AbstractEntityManager implements
@@ -17,7 +20,7 @@ public class MessageDAOImpl extends AbstractEntityManager implements
 	private Logger LOGGER = Logger.getLogger("com.mailmodule.dao.MessageDAOImpl");
 
 	/* save the mail to the database */
-	public void save(ComposeMail mail) {
+	public void save(ComposeMail mail) throws ApplicationException {
 		EntityManager em = getEntityManager();
 		try {
 			em.getTransaction().begin();
@@ -27,7 +30,7 @@ public class MessageDAOImpl extends AbstractEntityManager implements
 			em.getTransaction().rollback();
 			LOGGER.error("Exception while saving message in MessageDAOImpl-->save()"
 					+ e.getMessage());
-			
+			throw new ApplicationException(e, ERROR_COMPOSE_MAIL_SAVE);
 		} finally {
 			em.close();
 		}
@@ -52,7 +55,7 @@ public class MessageDAOImpl extends AbstractEntityManager implements
 	}
 	
 	/* Deleting the mail based on Id from the database */
-	public void deleteMail(ComposeMail mail) throws Exception {
+	public void deleteMail(ComposeMail mail) throws ApplicationException {
 		EntityManager em = getEntityManager();
 		try {
 			em.getTransaction().begin();
@@ -63,7 +66,7 @@ public class MessageDAOImpl extends AbstractEntityManager implements
 			em.getTransaction().rollback();
 			LOGGER.error("Exception while deleting template in MessageDAOImpl-->delete()"
 					+ e.getMessage());
-			throw e;
+			throw new ApplicationException(e, ERROR_COMPOSE_MAIL_DELETE);
 		} finally {
 			em.close();
 		}

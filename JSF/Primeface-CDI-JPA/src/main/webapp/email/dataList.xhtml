@@ -1,0 +1,43 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:body>
+		<ui:composition template="../dashboard.xhtml">
+			<ui:define name="content">
+				<h:form prependId="false" id="form">
+					<h:panelGrid columns="2">
+	  					<p:commandButton id="composeButton" action="componentTable" value="Back to List" ajax="false"/>
+	  				</h:panelGrid>
+					<!-- data listed by number format -->
+					<h3>Number</h3>  
+					<p:dataList value="#{tableBean.dataList}" var="data" type="ordered">  
+					   #{data.manufacturer},#{data.year}  
+					</p:dataList>  
+					
+					<!-- data listed by upper case letters --> 
+					<h3>Letter</h3>  
+					<p:dataList value="#{tableBean.dataList}" var="data" type="ordered" itemType="A">  
+					     #{data.manufacturer},#{data.year}  
+					</p:dataList>  
+					
+					<!-- data listed by lowercase letters --> 
+					<h3>Lowercase Letter</h3>  
+					<p:dataList value="#{tableBean.dataList}" var="data" type="ordered" itemType="a">  
+					     #{data.manufacturer},#{data.year}  
+					</p:dataList>  
+					
+					<!-- data listed by roman letters -->
+					<h3>Roman Letter</h3>  
+					<p:dataList value="#{tableBean.dataList}" var="data" type="ordered" itemType="i">  
+					     #{data.manufacturer},#{data.year}  
+					</p:dataList>
+				</h:form>
+			</ui:define>
+		</ui:composition>
+	</h:body>
+</html>
+			

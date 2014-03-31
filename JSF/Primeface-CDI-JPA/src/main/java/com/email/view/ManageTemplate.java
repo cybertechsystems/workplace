@@ -15,6 +15,13 @@ import javax.inject.Inject;
 import com.email.model.Template;
 import com.email.services.TemplateService;
 
+/**
+ * This is a JSF controller class for users to manage their Email Templates. It has all the features to manage Templates.
+ * 
+ * @author Cybertech
+ *
+ */
+
 @RequestScoped
 @javax.faces.bean.ManagedBean(name="manageTemplate")
 public class ManageTemplate extends BaseAction implements Serializable {
@@ -72,11 +79,11 @@ public class ManageTemplate extends BaseAction implements Serializable {
 
 	public List<Template> getTemplates() {
 		try{
-			LOGGER.info("============================================"+
+			LOGGER.info(
 					"Start of ManageTemplate.getTemplates()");
 			templates = templateService.findAll();
 			
-			LOGGER.info("============================================"+
+			LOGGER.info(
 					"End of ManageTemplate.getTemplates()");
 		}catch (Exception e) {
 			LOGGER.warning("Exception in ManageTemplate-->getTemplates()"	+ e.getMessage());
@@ -89,7 +96,7 @@ public class ManageTemplate extends BaseAction implements Serializable {
 	}
 
 	/**
-	 * This method is used for validating,creating and updating template.
+	 * This method is used to validate,create and update template.
 	 * 
 	 * validates if any existing template having same name is already present in
 	 * the database. If record is already present then it is displaying
@@ -99,7 +106,7 @@ public class ManageTemplate extends BaseAction implements Serializable {
 	 */
 	public String save() throws Exception {
 		try {
-			LOGGER.info("============================================"+
+			LOGGER.info(
 					"Start of ManageTemplate.save()");
 			
 			if (validate(template.getName())) {
@@ -123,7 +130,7 @@ public class ManageTemplate extends BaseAction implements Serializable {
 				
 				template = new Template();
 			}
-			LOGGER.info("============================================"+
+			LOGGER.info(
 					"End of ManageTemplate.save()");
 			
 			return "manageTemplate";
@@ -133,12 +140,12 @@ public class ManageTemplate extends BaseAction implements Serializable {
 	}
 
 	/**
-	 * This method is used for update existing template
+	 * This method is used to update existing template
 	 * get the id from the template
 	 */
 	public String edit() {
 		try {
-			LOGGER.info("============================================"+
+			LOGGER.info(
 					"Start of ManageTemplate.edit()");
 			templateService.saveOrUpdate(template);
 			
@@ -148,7 +155,7 @@ public class ManageTemplate extends BaseAction implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null, facesMessage);
 			template = new Template();
 
-			LOGGER.info("============================================"+
+			LOGGER.info(
 					"End of ManageTemplate.edit()");
 			
 			return "manageTemplate";
@@ -165,7 +172,7 @@ public class ManageTemplate extends BaseAction implements Serializable {
 	 */
 	public String delete() {
 		try {
-			LOGGER.info("============================================"+
+			LOGGER.info(
 					"Start of ManageTemplate.delete()");
 			templateService.remove(template);
 			templates = templateService.findAll();
@@ -177,7 +184,7 @@ public class ManageTemplate extends BaseAction implements Serializable {
 					"Template is Deleted");
 			FacesContext.getCurrentInstance().addMessage(null, facesMessage);
 			
-			LOGGER.info("============================================"+
+			LOGGER.info(
 					"Start of ManageTemplate.delete()");
 			
 			return "manageTemplate";
@@ -195,7 +202,7 @@ public class ManageTemplate extends BaseAction implements Serializable {
 	 * @return boolean
 	 */
 	public boolean validate(String name) {
-		LOGGER.info("============================================"+
+		LOGGER.info(
 				"Start of ManageTemplate.validate():name is:"+name);
 		
 		boolean value = false;
@@ -206,7 +213,7 @@ public class ManageTemplate extends BaseAction implements Serializable {
 			LOGGER.warning("Exception in ManageTemplate-->validate()"
 					+ e.getMessage());
 		}
-		LOGGER.info("============================================"+
+		LOGGER.info(
 				"End of ManageTemplate.validate()");
 		return value;
 	}
@@ -220,13 +227,13 @@ public class ManageTemplate extends BaseAction implements Serializable {
 	 */
 	public String valueChange(ValueChangeEvent evt) {
 		try{
-			LOGGER.info("============================================"+
+			LOGGER.info(
 					"Start of ManageTemplate.valueChange()");
 			String page = (String) evt.getNewValue();
 			Long id = Long.parseLong(page);
 			template = templateService.findById(id);
 			
-			LOGGER.info("============================================"+
+			LOGGER.info(
 					"End of ManageTemplate.valueChange()");
 			return "manageTemplate";
 		} catch (Exception e) {

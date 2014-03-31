@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:body>
+		<ui:composition template="../dashboard.xhtml">
+			<ui:define name="content">
+				<h:form prependId="false" id="form">
+					<p:growl showDetail="true" /> 
+					<p:panel id="components" header="Add a Component" styleClass="outer-panel">
+						<p:outputPanel id="editDialog">
+							<h:panelGrid columns="2" columnClasses="label,value"
+							 styleClass="grid">
+								<h:outputLabel for="name" value="Component Name" />
+								<h:inputText id="name" value="#{tableBean.component.name}"
+								required="true" requiredMessage="Component Name is required"/>
+								
+								<h:outputLabel for="page" value="Page" />
+								<h:inputText id="page" value="#{tableBean.component.page}"
+								required="true" requiredMessage="Page is required"/>
+								
+								<h:outputText />
+								<h:panelGrid columns="1">
+									<p:commandButton id="sendButton" action="#{tableBean.addComponent}" 
+		    							value="Save" ajax="false"/>
+								</h:panelGrid>
+							</h:panelGrid>
+						</p:outputPanel>
+					</p:panel>
+				</h:form>
+			</ui:define>
+		</ui:composition>
+	</h:body>
+</html>

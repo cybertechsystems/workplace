@@ -1,0 +1,24 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:body>
+		<ui:composition template="../dashboard.xhtml">
+			<ui:define name="content">
+				<h:form prependId="false" id="form">
+					 <p:menu style="font-size: 14px;">
+						   <p:submenu label="Component List" rendered="true">
+							 	<p:menuitem value="Calendar" url="/email/calendar.jsf"/>
+		               			<p:menuitem value="DataList" url="/email/dataList.jsf"/>
+		                        <p:menuitem value="DataTable" url="/email/dataTable.jsf"/>
+		                        <p:menuitem value="Pagination" url="/email/dataTablePagination.jsf"/>
+						</p:submenu>
+					 </p:menu>
+				</h:form>
+			</ui:define>
+		</ui:composition>
+	</h:body>
+</html>

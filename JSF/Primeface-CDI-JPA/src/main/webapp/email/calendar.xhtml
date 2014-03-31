@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="../dashboard.xhtml">
+		<ui:define name="content">
+			<h:form id="form">
+				<h3>Inline</h3>
+				<p:calendar value="#{calendarBean.date1}" mode="inline"
+					id="inlineCal" />
+
+				<!-- when clicking on outputtext filed,the calender popup displayed -->
+				<h3>Popup</h3>
+				<p:calendar value="#{calendarBean.date2}" id="popupCal" />
+
+				<!--when clicking on date picker, calender displayed -->
+				<h3>Popup Button</h3>
+				<p:calendar value="#{calendarBean.date3}" id="popupButtonCal"
+					showOn="button" />
+				<h:panelGrid columns="2">
+					<p:commandButton position="left" value="Submit" update="display"
+						oncomplete="dialog.show()" />
+					<p:commandButton id="composeButton" action="componentTable" value="Back to List" ajax="false"/>
+				</h:panelGrid>
+				<p:dialog header="Selected Dates" widgetVar="dialog"
+					showEffect="fade" hideEffect="fade">
+
+					<h:panelGrid id="display" columns="2" cellpadding="5">
+
+						<h:outputText value="Inline Date:" />
+						<h:outputText value="#{calendarBean.date1}" id="inlineDate">
+							<f:convertDateTime pattern="d/M/yyyy" />
+						</h:outputText>
+						
+						<!-- display popup date -->
+						<h:outputText value="Popup Date:" />
+						<h:outputText value="#{calendarBean.date2}" id="popupDate">
+							<f:convertDateTime pattern="d/M/yyyy" />
+						</h:outputText>
+						
+						<!-- display popup button date -->
+						<h:outputText value="Popup Button Date: " />
+						<h:outputText value="#{calendarBean.date3}" id="popupButtonDate">
+							<f:convertDateTime pattern="d/M/yyyy" />
+						</h:outputText>
+
+					</h:panelGrid>
+
+				</p:dialog>
+				
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

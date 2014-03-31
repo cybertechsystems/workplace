@@ -1,11 +1,18 @@
 package com.email.dao;
 
+import static com.email.util.Constants.ERROR_TEMPLATE_DELETE;
+import static com.email.util.Constants.ERROR_TEMPLATE_SAVE;
+
 import java.util.List;
+
 import javax.inject.Named;
 import javax.persistence.EntityManager;
 import javax.persistence.Query;
+
 import org.apache.log4j.Logger;
+
 import com.email.model.Template;
+import com.email.util.ApplicationException;
 
 @Named("templateDAO")
 public class TemplateDAOImpl extends AbstractEntityManager implements
@@ -14,7 +21,7 @@ public class TemplateDAOImpl extends AbstractEntityManager implements
 	private Logger LOGGER = Logger
 			.getLogger("com.mailmodule.dao.TemplateDAOImpl");
 
-	public void saveOrUpdate(Template template) throws Exception {
+	public void saveOrUpdate(Template template) throws ApplicationException {
 		EntityManager em = getEntityManager();
 		try {
 			em.getTransaction().begin();
@@ -28,7 +35,7 @@ public class TemplateDAOImpl extends AbstractEntityManager implements
 			em.getTransaction().rollback();
 			LOGGER.error("Exception while saving message in TemplateDAOImpl-->saveOrUpdate()"
 					+ e.getMessage());
-			throw e;
+			throw new ApplicationException(e, ERROR_TEMPLATE_SAVE);
 		}
 	}
 
@@ -41,7 +48,7 @@ public class TemplateDAOImpl extends AbstractEntityManager implements
 			templateList = em.createQuery(
 					"Select t from Template t").getResultList();
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 			LOGGER.error("Exception while saving message in TemplateDAOImpl-->saveOrUpdate()"
 					+ e.getMessage());
 			throw e;
@@ -61,7 +68,7 @@ public class TemplateDAOImpl extends AbstractEntityManager implements
 			query.setParameter("id", id.intValue());
 			template =  (Template) query.getSingleResult();
 		} catch (Exception e) {
-			e.printStackTrace();
+			
 			LOGGER.error("Exception while checking template by name "
 					+ "in TemplateDAOImpl-->findName()" + e.getMessage());
 			throw e;
@@ -86,7 +93,6 @@ public class TemplateDAOImpl extends AbstractEntityManager implements
 				return true;
 			}
 		} catch (Exception e) {
-			e.printStackTrace();
 			LOGGER.error("Exception while checking template by name "
 					+ "in TemplateDAOImpl-->findName()" + e.getMessage());
 			throw e;
@@ -97,7 +103,7 @@ public class TemplateDAOImpl extends AbstractEntityManager implements
 	}
 
 	/* Deleting the template based on Id from the database */
-	public void delete(Template template) throws Exception {
+	public void delete(Template template) throws ApplicationException {
 		EntityManager em = getEntityManager();
 		try {
 			em.getTransaction().begin();
@@ -106,10 +112,10 @@ public class TemplateDAOImpl extends AbstractEntityManager implements
 			em.getTransaction().commit();
 		} catch (Exception e) {
 			em.getTransaction().rollback();
-			e.printStackTrace();
+			
 			LOGGER.error("Exception while deleting template in TemplateDAOImpl-->delete()"
 					+ e.getMessage());
-			throw e;
+			throw new ApplicationException(e, ERROR_TEMPLATE_DELETE);
 		} finally {
 			em.close();
 		}

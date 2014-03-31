@@ -50,7 +50,7 @@ public class MessageServiceImpl implements MessageService {
 	@Override
 	public JasperPrint messageList(List<ComposeMail> mailList, String rootPath)
 		throws Exception {
-		LOGGER.info("============================================"+
+		LOGGER.info(
 				"Start of MessageServiceImpl:messageList()");
 		JasperPrint jasperPrint = null;
 		if (mailList.size() > 0) {
@@ -63,7 +63,7 @@ public class MessageServiceImpl implements MessageService {
 						new HashMap(), jrDataSource);
 			}
 		}
-		LOGGER.info("============================================"+
+		LOGGER.info(
 				"End of MessageServiceImpl:messageList()");
 		return jasperPrint;
 		
@@ -74,7 +74,7 @@ public class MessageServiceImpl implements MessageService {
 	 * @return memberCollection
 	 */
 	public Collection<Map<String, Object>> getData(List<ComposeMail> mailList) {
-		LOGGER.info("============================================"+
+		LOGGER.info(
 				"Start of MessageServiceImpl:getData()");
 		Collection<Map<String, Object>> memberCollection = new ArrayList<Map<String, Object>>();
 		for (int x = 0; x < mailList.size(); x++) {
@@ -84,7 +84,7 @@ public class MessageServiceImpl implements MessageService {
 			messageMap.put("toAddress",mailList.get(x).getToAddress());
 			memberCollection.add(messageMap);
 		}
-		LOGGER.info("============================================"+
+		LOGGER.info(
 				"End of MessageServiceImpl:getData()");
 		return memberCollection;
 	}

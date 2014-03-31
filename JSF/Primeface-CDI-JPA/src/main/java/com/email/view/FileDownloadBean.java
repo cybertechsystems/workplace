@@ -37,7 +37,7 @@ public class FileDownloadBean extends BaseAction {
      */
 	public FileDownloadBean() throws FileNotFoundException { 
 		try{
-			LOGGER.info("============================================"+
+			LOGGER.info(
 					"Start of FileDownloadBean()");
 			
 			ServletContext servletContext = (ServletContext) FacesContext.getCurrentInstance().getExternalContext().getContext(); 
@@ -46,7 +46,7 @@ public class FileDownloadBean extends BaseAction {
 			InputStream stream = new FileInputStream(new File(rootPath + "//"+now+".pdf"));
 	        file = new DefaultStreamedContent(stream, "application/pdf", "downloaded_"+now+".pdf");  
 	       
-	        LOGGER.info("============================================"+
+	        LOGGER.info(
 					"End of FileDownloadBean()");
 		}catch (Exception e) {
 			manageError(e, "Error while downloading File. ");

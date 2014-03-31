@@ -1,3 +1,4 @@
+
 package com.email.view;
 
 import java.io.File;
@@ -28,6 +29,12 @@ import com.email.model.ComposeMail;
 import com.email.services.MessageService;
 import com.email.util.Constants;
 
+/**
+ * This is a JSF controller class for several different views that deal with the Messages in the databases. 
+ * 
+ * @author Cybertech
+ *
+ */
 @RequestScoped
 @javax.faces.bean.ManagedBean(name="messageList")
 public class ManageMessage extends BaseAction implements Serializable {
@@ -67,7 +74,7 @@ public class ManageMessage extends BaseAction implements Serializable {
 	public String sendMail() throws Exception {
 		
 		try {
-			LOGGER.info("============================================"+
+			LOGGER.info(
 					"Start of ManageMessage.sendMail()");
 			mail.setSendDate(new Date());
 			messageService.save(mail);
@@ -77,7 +84,7 @@ public class ManageMessage extends BaseAction implements Serializable {
 			FacesContext.getCurrentInstance().addMessage(null, facesMessage);
 			mail = new ComposeMail();
 			
-			LOGGER.info("============================================"+
+			LOGGER.info(
 					"End of ManageTemplate.sendMail()");
 			
 		} catch (Exception e) {
@@ -94,7 +101,7 @@ public class ManageMessage extends BaseAction implements Serializable {
 	 * @throws Exception
 	 */
 	public void delete() throws Exception {
-		LOGGER.info("============================================"+
+		LOGGER.info(
 				"Start of MessageList:delete()");
 		try {
 			messageService.delete(mail);
@@ -105,7 +112,7 @@ public class ManageMessage extends BaseAction implements Serializable {
 					"Data is Deleted");
 			FacesContext.getCurrentInstance().addMessage(null, facesMessage);
 			
-			LOGGER.info("============================================"+
+			LOGGER.info(
 					"End of MessageList:delete()");	
 		} catch (Exception e) {
 			manageError(e, "Error while Deleting Mail. ");
@@ -117,7 +124,7 @@ public class ManageMessage extends BaseAction implements Serializable {
 	 * @return
 	 */
 	public String print() {
-		LOGGER.info("============================================"+
+		LOGGER.info(
 				 "Start of ManageMessage:print()");
 		try {
 			//get root path
@@ -132,7 +139,7 @@ public class ManageMessage extends BaseAction implements Serializable {
 			//Export the pdf file for jasperPrint
 			JasperExportManager.exportReportToPdfFile(jasperPrint, rootPath	+ "//" + now + ".pdf");
 			
-			LOGGER.info("============================================"+
+			LOGGER.info(
 						"End of ManageMessage.print()");
 			return "fileDownload";
 		} catch (Exception e) {
@@ -148,9 +155,9 @@ public class ManageMessage extends BaseAction implements Serializable {
 	public String handleFileUpload(FileUploadEvent event) {
 	     
 		try {
-			LOGGER.info("============================================"+
+			LOGGER.info(
 					"Start of ManageMessage.handleFileUload()");
-			FacesContext ctx = FacesContext.getCurrentInstance();
+			//FacesContext ctx = FacesContext.getCurrentInstance();
 			ServletContext servletContext = (ServletContext) FacesContext
 					.getCurrentInstance().getExternalContext().getContext();
 			String rootPath = servletContext.getRealPath("");
@@ -174,7 +181,7 @@ public class ManageMessage extends BaseAction implements Serializable {
 			inputStream.close();
 			FacesMessage msg = new FacesMessage("Succesful", event.getFile().getFileName() + " is uploaded.");
 	        FacesContext.getCurrentInstance().addMessage(null, msg);
-	        LOGGER.info("============================================"+
+	        LOGGER.info(
 					"End of ManageMessage.handleFileUload()"+ event.getFile().getFileName());
 	        return "messageList";
 			 
@@ -187,7 +194,7 @@ public class ManageMessage extends BaseAction implements Serializable {
 	  }
 	
 	public String logout() throws ServletException {
-		LOGGER.info("============================================"+
+		LOGGER.info(
 				"Start of ManageMessage.logout()");
 	    HttpServletRequest request = (HttpServletRequest)FacesContext.getCurrentInstance().getExternalContext().getRequest();
 	    request.logout();
@@ -197,7 +204,7 @@ public class ManageMessage extends BaseAction implements Serializable {
 	        session.invalidate();
 	    }
 	    
-	    LOGGER.info("============================================"+
+	    LOGGER.info(
 				"End of ManageMessage.logout()");
 	    return "logout"; 
 	}
