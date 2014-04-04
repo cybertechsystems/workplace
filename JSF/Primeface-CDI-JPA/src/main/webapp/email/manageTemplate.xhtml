@@ -1,0 +1,85 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.prime.com.tr/ui"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+<h:body>
+	<ui:composition template="../dashboard.xhtml">
+
+		<ui:define name="content">
+
+			<p:panel id="manageTemplate" header="Add/Edit Template" styleClass="outer-panel">
+				<p:growl showDetail="true" />
+				<h:form prependId="false">
+					<h:panelGrid columns="2" columnClasses="label,value">
+						<h:outputLabel for="select" value="Select Template" />
+						<h:selectOneMenu id="select" value="#{manageTemplate.templateId}"
+							style="width:147px;" onchange="this.form.submit();"
+							valueChangeListener="#{manageTemplate.valueChange}"
+							immediate="true">
+							<f:selectItem itemLabel="Select One" itemValue="" />
+							<f:selectItems value="#{manageTemplate.templates}" var="template"
+								itemLabel="#{template.name}" itemValue="#{template.id}" />
+						</h:selectOneMenu>
+					</h:panelGrid>
+				</h:form>
+				<hr />
+				<h:form prependId="false" id = "formId">
+					<p:messages globalOnly="false"/>
+					<h:inputHidden id="template" value="#{manageTemplate.template.id}"></h:inputHidden>
+					<h:inputHidden id="duplicate_name"
+						value="#{manageTemplate.template.name}">
+					</h:inputHidden>
+					<h:inputHidden id="duplicate_content"
+						value="#{manageTemplate.template.content}">
+					</h:inputHidden>
+
+					<h:panelGrid columns="2" columnClasses="label,value"
+						styleClass="grid">
+						<h:outputLabel for="name" value="Template Name" />
+						<h:inputText id="name" value="#{manageTemplate.template.name}"
+							required="true" requiredMessage="Name is required"
+							validatorMessage="Max length is 35" width="55">
+							<f:validateLength maximum="35" />
+						</h:inputText>
+						
+						<h:outputLabel for="select" value="Select Fields" />
+						<h:selectOneMenu id="datafields"
+							value="#{manageTemplate.dataField}" style="width:147px;"
+							onchange="editorHtml.editor.focus();
+								setTimeout(function(){
+									editorHtml.editor.execCommand('inserthtml',value, false);
+	                          	}, 0);
+	                          	return false;">
+							<f:selectItem itemLabel="Select One" itemValue="" />
+							<f:selectItems value="#{manageTemplate.dataFields}" />
+						</h:selectOneMenu>
+						
+						<h:outputLabel for="txtArea" value="Content" />
+					 	<ui:include src="/email/editor.xhtml" id="txtArea">
+						 	<ui:param name="editorValue" value="#{manageTemplate.template.content}" />
+   						</ui:include> 
+   						 
+					</h:panelGrid>
+					
+					<h:panelGrid columns="3">
+						<p:commandButton id="createTemplateBtn" value="Create Template"
+							action="#{manageTemplate.save}" 
+							update="manageTemplate">
+						</p:commandButton>
+						<p:commandButton id="editTemplateBtn" value="Edit Template"
+							action="#{manageTemplate.edit}" 
+							update="manageTemplate" />
+						<p:commandButton id="deleteTemplateBtn" value="Delete Template"
+							action="#{manageTemplate.delete}" update="manageTemplate">
+						</p:commandButton>
+					</h:panelGrid>
+
+				</h:form>
+			</p:panel>
+		</ui:define>
+	</ui:composition>
+</h:body>
+</html>

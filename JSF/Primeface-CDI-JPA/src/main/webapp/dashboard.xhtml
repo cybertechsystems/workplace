@@ -1,0 +1,37 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:p="http://primefaces.prime.com.tr/ui"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      >
+    <h:head>
+        <script type="text/javascript" src="#{request.contextPath}/scripts/common.js"></script>
+	   	<link href="#{request.contextPath}/css/style.css" rel="stylesheet" type="text/css" />
+    </h:head>
+    
+    <h:body>
+        <p:layout fullPage="true">  
+           
+            <p:layoutUnit position="left" width="200" header="Menu">
+                <h:form>
+                    <p:menu style="font-size: 12px;">
+                    	<p:submenu label="Email" rendered="true">
+                            <p:menuitem value="Template" url="/email/manageTemplate.jsf"/>
+                            <p:menuitem value="MessageList" url="/email/messageList.jsf"/>
+                            <!-- <p:menuitem value="Logout" actionListener="#{messageList.logout}"/>  -->
+                            <p:menuitem value="Log Out" url="/logout.jsp"/>
+                            
+                        </p:submenu>
+                    </p:menu>  
+                </h:form>
+            </p:layoutUnit>   
+            
+            <p:layoutUnit position="center" scrollable="true">  
+                <ui:insert name="content"><h1>System Announcements Here</h1></ui:insert>
+            </p:layoutUnit>  
+        </p:layout> 
+    </h:body>
+</html>
+
