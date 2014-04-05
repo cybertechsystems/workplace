@@ -5,30 +5,23 @@
 	xmlns:h="http://java.sun.com/jsf/html"
 	xmlns:p="http://primefaces.org/ui"
 	xmlns:ui="http://java.sun.com/jsf/facelets">
-<h:head>
-	<link rel="stylesheet" type="text/css"
-		href="../../styles/datatable.css" />
-	<link rel="stylesheet" type="text/css" href="../../styles/base.css" />
-
-</h:head>
-<h:body>
-	<div id="page">
-
-		<ui:insert name="header">
-			<ui:include src="header.xhtml" />
-		</ui:insert>
-
-
-		<p:outputPanel id="contentContainer"
-			rendered="#{orderBean.page != null}">
-			<ui:include src="#{orderBean.page}.xhtml" />
-		</p:outputPanel>
-
-
-		<ui:insert name="footer">
-			<ui:include src="footer.xhtml" />
-		</ui:insert>
-
-	</div>
-</h:body>
+	<h:head>
+		<link rel="stylesheet" type="text/css"
+			href="../../styles/datatable.css" />
+		<link rel="stylesheet" type="text/css" href="../../styles/base.css" />
+	</h:head>
+	<h:body>
+		<div id="page">
+			<ui:insert name="header">
+				<ui:include src="header.xhtml" />
+			</ui:insert>
+			<p:outputPanel id="contentContainer"
+				rendered="#{orderBean.page != null}">
+				<ui:include src="#{orderBean.page}.xhtml" />
+			</p:outputPanel>
+			<ui:insert name="footer">
+				<ui:include src="footer.xhtml" />
+			</ui:insert>
+		</div>
+	</h:body>
 </html>

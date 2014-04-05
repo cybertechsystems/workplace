@@ -20,8 +20,8 @@
 
 						<p:column headerText="Order Number" filterBy="login"
 							filterMatchMode="contains">
-			            #{order.orderNum}
-			        </p:column>
+			        		    #{order.orderNum}
+			      		</p:column>
 
 						<p:column headerText="Check Open Time">
 							<h:outputText value="#{order.chkOpenTime}">
@@ -31,46 +31,41 @@
 
 						<p:column headerText="Ipad ID" filterBy="ipadId"
 							filterMatchMode="contains">
-			            #{order.ipadId}
-			        </p:column>
+			          		  #{order.ipadId}
+			       		</p:column>
 
 						<p:column headerText="Is Updated" filterBy="isUpdated"
 							filterMatchMode="contains">
-			            #{order.isUpdated}
-			        </p:column>
+			          		  #{order.isUpdated}
+			     		</p:column>
 
 						<p:column headerText="Remark" filterBy="remark"
 							filterMatchMode="contains" autoResize="false">
-			            #{order.remark}
-			        </p:column>
+			        		    #{order.remark}
+			      		</p:column>
 
 						<p:column headerText="Details/Edit/Delete" filterBy="edit/delete"
 							filterMatchMode="contains">
-							<p:commandLink
-								actionListener="#{orderBean.showDetails(order.checkId)}"
-								update=":contentContainer">
-								<p:graphicImage value="../../images/search.jpg" width="20"
-									height="20" styleClass="detailsBtn" />
-							</p:commandLink>
-
-							<h:outputText value="" styleClass="editBar" />
-
-							<p:commandLink styleClass="editBtn"
-								actionListener="#{orderBean.editOrder(order.checkId)}"
-								update=":contentContainer">
-								<p:graphicImage value="../../images/edit-icon.png" width="20"
-									height="20" />
-							</p:commandLink>
-
-							<h:outputText value="" styleClass="editBar" />
-
-							<p:commandLink styleClass="deleteBtn"
-								actionListener="#{orderBean.deleteOrder(order)}"
-								update=":contentContainer">
-								<p:graphicImage value="../../images/delete-big.png" width="20"
-									height="20" />
-							</p:commandLink>
-
+								<p:commandLink
+									actionListener="#{orderBean.showDetails(order.checkId)}"
+									update=":contentContainer">
+										<p:graphicImage value="../../images/search.jpg" width="20"
+											height="20" styleClass="detailsBtn" />
+								</p:commandLink>
+								<h:outputText value="" styleClass="editBar" />
+								<p:commandLink styleClass="editBtn"
+									actionListener="#{orderBean.editOrder(order.checkId)}"
+									update=":contentContainer">
+										<p:graphicImage value="../../images/edit-icon.png" width="20"
+											height="20" />
+								</p:commandLink>
+								<h:outputText value="" styleClass="editBar" />
+								<p:commandLink styleClass="deleteBtn"
+									actionListener="#{orderBean.deleteOrder(order)}"
+									update=":contentContainer">
+										<p:graphicImage value="../../images/delete-big.png" width="20"
+											height="20" />
+								</p:commandLink>
 						</p:column>
 						<p:rowEditor />
 					</p:dataTable>

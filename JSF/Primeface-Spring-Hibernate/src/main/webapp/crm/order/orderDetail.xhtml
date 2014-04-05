@@ -19,48 +19,43 @@
 
 						<p:column headerText="Menu Item Number" filterBy="menuItemNo"
 							filterMatchMode="contains">
-			            #{detail.menuItemNo}
-			        </p:column>
+			          		  #{detail.menuItemNo}
+			     	   </p:column>
 
 						<p:column headerText="Quantity">
-			            #{detail.quantity}
-			        </p:column>
+			            	  #{detail.quantity}
+			    	    </p:column>
 
 						<p:column headerText="Is Updated" filterBy="isUpdated"
 							filterMatchMode="contains">
-			            #{detail.isUpdated}
-			        </p:column>
+			       	   			#{detail.isUpdated}
+			     	    </p:column>
 
 						<p:column headerText="Check Open Time" filterBy="chkOpenTime"
 							filterMatchMode="contains">
-							<h:outputText value="#{detail.chkOpenTime}">
-								<f:convertDateTime pattern="yyyy-MM-dd" />
-							</h:outputText>
+								<h:outputText value="#{detail.chkOpenTime}">
+									<f:convertDateTime pattern="yyyy-MM-dd" />
+								</h:outputText>
 						</p:column>
-
 						<p:column headerText="Remark" filterBy="remark"
 							filterMatchMode="contains" autoResize="false">
-			            #{detail.remark}
-			        </p:column>
-
+			           			 #{detail.remark}
+			        	</p:column>
 						<p:column headerText="Edit/Delete" filterBy="edit/delete"
 							filterMatchMode="contains">
 							<p:commandLink styleClass="editBtn"
 								actionListener="#{orderBean.editDetails(detail.detailId)}"
 								update=":contentContainer">
-								<p:graphicImage value="../../images/edit-icon.png" width="20"
-									height="20" />
+									<p:graphicImage value="../../images/edit-icon.png" width="20"
+										height="20" />
 							</p:commandLink>
-
 							<h:outputText value="" styleClass="editBar" />
-
 							<p:commandLink styleClass="deleteBtn"
 								actionListener="#{orderBean.deleteDetails(detail)}"
 								update=":contentContainer">
-								<p:graphicImage value="../../images/delete-big.png" width="20"
-									height="20" />
+									<p:graphicImage value="../../images/delete-big.png" width="20"
+										height="20" />
 							</p:commandLink>
-
 						</p:column>
 					</p:dataTable>
 				</div>
