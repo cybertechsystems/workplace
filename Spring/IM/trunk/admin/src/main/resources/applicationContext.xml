@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" 
+		xmlns:context="http://www.springframework.org/schema/context" 
+		xmlns:security="http://www.springframework.org/schema/security" 
+		xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" 
+		xmlns:mvc="http://www.springframework.org/schema/mvc"  
+		xmlns:util="http://www.springframework.org/schema/util"  
+		xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd  
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc-3.0.xsd 
+		http://www.springframework.org/schema/util http://www.springframework.org/schema/util/spring-util-3.0.xsd 
+		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-3.0.xsd 
+		http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security-3.0.xsd">
+
+  <!--
+        Custom properties supplied from
+        -Dproperty.folder=/var/myapp/props
+    -->
+    <bean id="envConfig"
+        class="org.impalaframework.spring.SystemPropertyBasedPlaceholderConfigurer">
+        <property name="fileLocations">
+            <list>
+                <value>applicationContext.properties</value>
+            </list>
+        </property>
+    </bean>
+
+	<util:properties id="systemProps" location="classpath:system.properties" />
+	
+ 	<context:component-scan base-package="com.fish_co" />
+    <mvc:annotation-driven />
+    
+    <!-- Ibatis Configuration -->
+    <bean id="sqlMapClient"
+        class="org.springframework.orm.ibatis.SqlMapClientFactoryBean">
+        <property name="configLocation">
+            <value>classpath:sqlMapConfig.xml</value>
+        </property>
+    </bean>
+
+    <!-- Data Access Configuration -->
+    <bean id="dataSourceConfig" class="org.apache.commons.dbcp.BasicDataSource"
+        destroy-method="close">
+        <property name="driverClassName" value="com.mysql.jdbc.Driver" />
+        <property name="url"
+            value="jdbc:mysql://${db.host}:${db.port}/${db.name}?useUnicode=yes&amp;characterEncoding=UTF8" />
+        <property name="username" value="${db.user}" />
+        <property name="password" value="${db.password}" />        
+        <property name="maxActive" value="10" />
+        <property name="maxIdle" value="5" />
+        <property name="minIdle" value="1" />
+        <property name="poolPreparedStatements" value="true" />
+        <property name="initialSize" value="1" />
+        <property name="validationQuery" value="SELECT 1" />
+    </bean>
+    <bean id="dataSource"
+        class="org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy">
+        <property name="targetDataSource">
+            <ref local="dataSourceConfig" />
+        </property>
+    </bean>
+    <bean id="transactionManager"
+        class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
+        <property name="dataSource">
+            <ref bean="dataSourceConfig" />
+        </property>
+    </bean>
+    <bean id="dao" class="com.fish_co.admin.DAO">
+        <property name="sqlMapClient" ref="sqlMapClient" />
+        <property name="dataSource" ref="dataSource" />
+        <property name="transactionManager" ref="transactionManager" />
+    </bean>
+    
+    <!-- Apache Tiles  -->
+    <bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+        <property name="viewClass" value="org.springframework.web.servlet.view.tiles2.TilesView"/>
+    </bean>
+
+	 <!-- Configures the Tiles layout system -->
+    <bean class="org.springframework.web.servlet.view.tiles2.TilesConfigurer" id="tilesConfigurer">
+        <property name="definitions">
+            <list>
+                <value>/WEB-INF/pages/layout/layout.xml</value>
+                <value>/WEB-INF/pages/**/views.xml</value>
+            </list>
+        </property>
+    </bean>
+    
+    <!-- Login Filter -->
+    <bean id="loginFilter" class="com.fish_co.admin.filter.LoginFilter">
+        <property name="dao" ref="dao" />
+    </bean>
+    
+    <bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+
+</beans>

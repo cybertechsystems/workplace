@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+  PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+  "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="category">
+
+    <resultMap id="category" class="com.fish_co.admin.beans.menu_item.Category">
+        <result property="categoryID" column="categoryID" />
+        <result property="description" column="description" />
+        <result property="descriptionCN" column="descriptionCN" />
+        <result property="imgUrl" column="imgUrl" />
+        <result property="isShown" column="isShown" />
+        <result property="sequence" column="sequence" />
+        <result property="templateId" column="templateId" />
+        <result property="iPodOnly" column="iPodOnly" />
+		<result property="iPadOnly" column="iPadOnly" />
+    </resultMap>
+    
+    <select id="create-category-item" resultClass="java.lang.String">
+        SELECT MAX(LAST_INSERT_ID(`categoryID`)) FROM `category`
+    </select>
+    
+    <insert id="create-category_old" parameterClass="java.lang.String">
+        INSERT INTO `category`(
+          `categoryID`,
+          `description`,
+          `imgUrl`,
+          `isShown`,
+          `sequence`,
+          `templateId`
+        ) VALUES(#value#,NULL,0,NULL,'98',NULL)
+    </insert>
+    
+    <select id="retrieve-category" resultMap="category.category" parameterClass="com.fish_co.admin.beans.Paging">
+        SELECT
+        a.`categoryID`,
+        a.`description`,
+        a.`descriptionCN`,
+        a.`imgUrl`,
+        a.`isShown`,
+        a.`sequence`,
+        a.`templateId`,
+        a.`iPodOnly`,
+        a.`iPadOnly`
+        FROM `category` AS a
+        <dynamic prepend="WHERE ">
+	        <isNotNull property="search" >
+			 	 a.`description` like #search#
+			</isNotNull>
+		</dynamic>
+        order by
+        
+        <isEqual property="orderCol" compareValue="99">
+			a.`lastAccessesDate`
+		</isEqual>   
+ 
+ 		<isNotEqual property="orderCol" compareValue="99">
+			 #orderCol#
+		</isNotEqual>
+		
+		<isEqual property="orderBy" compareValue="desc">
+			 desc
+		</isEqual>  
+		
+		<isEqual property="orderBy" compareValue="asc">
+			 asc
+		</isEqual>   
+        LIMIT #start#, #size#
+    </select>
+    
+    <select id="retrieve-category-names" resultMap="category.category">
+        SELECT
+        a.`categoryID`,
+        a.`description`,
+        a.`descriptionCN`,
+        a.`imgUrl`,
+        a.`isShown`,
+        a.`sequence`,
+        a.`templateId`,
+        a.`iPodOnly`,
+        a.`iPadOnly`
+        FROM `category` AS a
+        order by a.`description` asc
+    </select>
+    
+    <select id="retrieve-subcategory-names" resultMap="category.category" parameterClass="java.lang.String">
+        SELECT
+        a.`categoryID`,
+        a.`description`,
+        a.`descriptionCN`,
+        a.`imgUrl`,
+        a.`isShown`,
+        a.`sequence`,
+        a.`templateId`,
+        a.`iPodOnly`,
+        a.`iPadOnly`
+        FROM `category` AS a WHERE a.`categoryId` != #categoryId#
+        order by a.`description` asc
+    </select>
+    
+    <select id="retrieve-subcategory-details" resultMap="category.category" parameterClass="java.util.List">
+        SELECT
+        a.`categoryID`,
+        a.`description`,
+        a.`descriptionCN`,
+        a.`imgUrl`,
+        a.`isShown`,
+        a.`sequence`,
+        a.`templateId`,
+        a.`iPodOnly`,
+        a.`iPadOnly`
+        FROM `category` AS a WHERE a.`categoryId` IN
+        <iterate open="(" close=")" conjunction=",">
+        	#[]#
+		</iterate>
+		order by a.`description` asc
+    </select>
+
+    <update id="update-category_old" parameterClass="com.fish_co.admin.beans.Data">
+        UPDATE `category` SET
+        <isEqual property="columnName" compareValue="description">`description` = #value#</isEqual>
+        <isEqual property="columnName" compareValue="descriptionCN">`descriptionCN` = #value#</isEqual>
+        <isEqual property="columnName" compareValue="imgUrl">`imgUrl` = #value#</isEqual>
+        <isEqual property="columnName" compareValue="isShown">`isShown` = #value#</isEqual>
+        <isEqual property="columnName" compareValue="sequence">`sequence` = #value#</isEqual>
+        <isEqual property="columnName" compareValue="templateId">`templateId` = #value#</isEqual>
+        <isEqual property="columnName" compareValue="iPodOnly">`iPodOnly` = #value#</isEqual>
+        <isEqual property="columnName" compareValue="iPadOnly">`iPadOnly` = #value#</isEqual>
+        WHERE `categoryID` = #primaryKey#
+    </update>
+    
+    <delete id="delete-category-item" parameterClass="java.lang.String">
+        DELETE FROM `category` WHERE `categoryID` = #value#
+    </delete>
+    
+    <select id="get-next-category-id" resultClass="java.lang.String">
+        SELECT MAX(LAST_INSERT_ID(`categoryID`)) FROM `category`
+    </select>
+    
+    <insert id="create-category" parameterClass="com.fish_co.admin.beans.menu_item.Category">
+        INSERT INTO `category`(
+          `categoryID`,
+          `description`,
+           `descriptionCN`,
+          `imgUrl`,
+          `isShown`,
+          `sequence`
+        ) VALUES(#categoryID#,#description#,#descriptionCN#,#imgUrl#,#isShown#,#sequence#)
+    </insert>
+    
+    <select id="retrieve-category-count" resultClass="java.lang.String" parameterClass="com.fish_co.admin.beans.Paging">
+        SELECT
+        count(*)
+        FROM `category` AS a 
+        <dynamic prepend="WHERE ">
+	        <isNotNull property="search" >
+			 	 a.`description` like #search#
+			</isNotNull>
+		</dynamic>
+    </select>
+    
+     <select id="retrieve-a-category" resultMap="category.category" parameterClass="java.lang.String">
+        SELECT
+        a.`categoryID`,
+        a.`description`,
+        a.`descriptionCN`,
+        a.`imgUrl`,
+        a.`isShown`,
+        a.`sequence`,
+        a.`templateId`,
+        a.`iPodOnly`,
+        a.`iPadOnly`
+        FROM `category` AS a  WHERE a.`categoryID` = #categoryID#
+    </select>
+    
+     <update id="update-category" parameterClass="com.fish_co.admin.beans.menu_item.Category">
+		UPDATE `category` 
+		SET `description` = #description#,`descriptionCN` = #descriptionCN#	,
+		`imgUrl` = #imgUrl# ,`sequence` = #sequence#,`isShown` = #isShown# 
+		WHERE `categoryID` = #categoryID#
+    </update>
+    
+    <delete id="delete-category" parameterClass="java.lang.String">
+        DELETE FROM `category` WHERE `categoryID` = #value#
+    </delete>
+    
+    <select id="retrieve-category-desc" resultClass="java.lang.Integer" parameterClass="java.lang.String">
+        SELECT
+        count(*)
+        FROM `category` AS a  WHERE a.`description` = #description#
+    </select>
+    
+    <select id="retrieve-availcategory-details" resultMap="category.category" parameterClass="java.util.List">
+        SELECT
+        a.`categoryID`,
+        a.`description`,
+        a.`descriptionCN`,
+        a.`imgUrl`,
+        a.`isShown`,
+        a.`sequence`,
+        a.`templateId`,
+        a.`iPodOnly`,
+        a.`iPadOnly`
+        FROM `category` AS a WHERE a.`categoryId` NOT IN<iterate open="(" close=")" conjunction=",">
+#[]#
+</iterate>
+    </select>
+    
+    <select id="retrieve-shown-value" resultMap="category.category" parameterClass="java.lang.String">
+        SELECT
+        a.`categoryID`,
+        a.`description`,
+        a.`descriptionCN`,
+        a.`imgUrl`,
+        a.`isShown`,
+        a.`sequence`,
+        a.`templateId`,
+        a.`iPodOnly`,
+        a.`iPadOnly`
+        FROM `category` AS a WHERE a.`categoryID` = #categoryID#
+    </select>
+    
+    <update id="update-shown-value" parameterClass="com.fish_co.admin.beans.menu_item.Category">
+		UPDATE `category` 
+		SET `isShown` = #isShown#		
+		WHERE `categoryID` = #categoryID#
+    </update>
+    
+</sqlMap>

@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    <!-- For Page Submit -->  
+    
+    <definition extends="layout" name="/orderlist">
+        <put-attribute name="content" value="orderlist" />
+        <put-attribute name="menu" value="/WEB-INF/pages/order/menu.jsp" />
+    </definition>
+    
+    <definition extends="layout" name="/orderdetailslist">
+        <put-attribute name="content" value="orderdetailslist" />
+        <put-attribute name="menu" value="/WEB-INF/pages/order/orderDetailMenu.jsp" />
+    </definition>
+    
+     <!-- For AJAX -->
+    <definition name="orderdetailslist" template="/WEB-INF/pages/order/orderDetailsList.jsp">
+    </definition>
+    
+    <definition name="orderdetailsadd" template="/WEB-INF/pages/order/orderDetailsSave.jsp">
+    </definition>
+   
+    <definition name="orderlist" template="/WEB-INF/pages/order/list.jsp">
+    </definition>
+    
+    <definition name="orderadd" template="/WEB-INF/pages/order/save.jsp">
+    </definition>
+    
+</tiles-definitions>
