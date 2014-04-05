@@ -23,17 +23,13 @@
 		
 		<!-- For Validation of errors -->
 		<div class="validationErrors" id="errorMsgTset"></div>
-
 		<input type="hidden" id="checkIdOrg" value="${order.checkId}" />
 		<div class="clear"></div>
 		<div class="row">
-			<label for="checkId">
-				Check Id
-			</label>
+			<label for="checkId">Check Id</label>
 			<form:input path="checkId" id="checkId" class="txt onlyRead" readOnly="readonly"/>
 			<img id="validationCheckImage" alt="" src="${context}/images/white_dot.gif" />
 		</div>
-	
 		<div class="clear"></div>
 		<div class="row">
 			<label for="orderNum">
@@ -41,7 +37,6 @@
 			</label>
 			<form:input path="orderNum" id="orderNum" class="txt"/>
 		</div>
-		
 		<div class="clear"></div>
 		<div class="row">
 			<label>
@@ -49,7 +44,6 @@
 			</label>
 			<form:input path="chkOpenTime" 	id="chkOpenTime" class="txt" />
 		</div>
-		
 		<div class="clear"></div>
 		<div class="row">
 			<label>
@@ -57,7 +51,6 @@
 			</label>
 			<form:input path="ipadId" id="ipadId" class="txt" />
 		</div>
-		
 		<div class="clear"></div>
 		<div class="row">
 			<label for="isOpen">
@@ -65,7 +58,6 @@
 			</label>
 			<form:input path="isOpen" id="isOpen" class="txt onlyRead" readOnly="readonly"/>
 		</div>
-		
 		<div class="clear"></div>
 		<div class="row">
 			<label for="isUpdated">
@@ -73,9 +65,7 @@
 			</label>
 			<form:input path="isUpdated" id="isUpdated" class="txt onlyRead" readOnly="readonly"/>
 		</div>
-		
 		<div class="clear"></div>
-		
 		<!-- Save,Cancel Buttons -->
 		<div class="button_row">
 			<button type="button" name="Save" class="addBtn" id="savebutton"

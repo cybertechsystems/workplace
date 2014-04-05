@@ -1,6 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
-	<div class="dataTables_wrapper" style="margin: 1% 2%">
+<div class="dataTables_wrapper" style="margin: 1% 2%">
 	<script type="text/javascript" charset="utf-8">
 		$("#contentList").ready(
 			function() {
@@ -8,12 +8,9 @@
 			}
 		);
 	</script>
-
 	<div class="dataTables_length"></div>
 	<div class="dataTables_filter"></div>
-	
 	<input type="hidden" id="selectedrow" name="selectedrow" value="" />
-	
 	<table id="main-table" width="100%">
 		<thead>
 			<tr>
@@ -27,15 +24,13 @@
 			</tr>
 		</thead>
 		<tbody id="table-body">
-				<tr>
-					<td class="dataTables_empty" colspan="7">Loading data from server</td>
-				</tr>
+			<tr>
+				<td class="dataTables_empty" colspan="7">Loading data from server</td>
+			</tr>
 		</tbody>
 	</table>
-	
 	<div class="dataTables_info"></div>
 	<div class="dataTables_paginate"></div>
-	
 	<form action="orderDetails.html" id="gotoDetailsPage" method="post">
 		<input id="checkidselected" type="hidden" name="CheckId" value="">
 	</form>

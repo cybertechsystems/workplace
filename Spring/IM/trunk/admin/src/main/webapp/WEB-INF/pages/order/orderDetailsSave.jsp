@@ -1,5 +1,6 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+
 <div id="orderDetailsSave"  class="content">
 	<script type="text/javascript" charset="utf-8">
 		$("#orderDetailsManageForm").ready(
@@ -25,7 +26,6 @@
 		<!-- For Validation of errors -->
 		<div class="validationErrors" id="errorMsgTset"></div>
 		<input type="hidden" id="detailIdOrg" value="${details.detailId}" />
-
 		<div class="clear"></div>
 		<div class="row">
 			<label for="detailId">
@@ -33,15 +33,11 @@
 			</label>
 			<form:input path="detailId" id="detailId" class="txt onlyRead" readOnly="readonly"/>
 		</div>
-		
 		<div class="clear"></div>
 		<div class="row">
-			<label for="checkId">
-				Check ID
-			</label>
+			<label for="checkId">Check ID</label>
 			<form:input path="checkId" id="checkId" class="txt onlyRead" readOnly="readonly"/>
 		</div>
-	
 		<div class="clear"></div>
 		<div class="row">
 			<label for="menuItemNo">
@@ -50,9 +46,7 @@
 			<form:input path="menuItemNo" id="menuItemNo" class="txt"/>
 			<img id="validationNoImage" alt="" src="${context}/images/white_dot.gif" />
 		</div>
-		
 		<div class="clear"></div>
-		
 		<div class="clear"></div>
 		<div class="row">
 			<label for="isCondiment">
@@ -60,7 +54,6 @@
 			</label>
 			<form:input path="isCondiment" id="isCondiment" class="txt"/>
 		</div>
-		
 		<div class="clear"></div>
 		<div class="row">
 			<label for="quantity">
@@ -68,7 +61,6 @@
 			</label>
 			<form:input path="quantity" id="quantity" class="txt"/>
 		</div>
-		
 		<div class="clear"></div>
 		<div class="row">
 			<label for="isUpdated">
@@ -76,7 +68,6 @@
 			</label>
 			<form:input path="isUpdated" id="isUpdated" class="txt onlyRead" readOnly="readonly"/>
 		</div>
-		
 		<div class="clear"></div>
 		<div class="row">
 			<label>
@@ -94,5 +85,4 @@
 		</div>
 		<!--/ Save,Cancel Buttons -->
 	</form:form>
-
 </div>

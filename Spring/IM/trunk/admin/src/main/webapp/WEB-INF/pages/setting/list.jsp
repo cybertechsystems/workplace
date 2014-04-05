@@ -9,12 +9,9 @@
 			}
 		);
 	</script>
-
 	<div class="dataTables_length"></div>
 	<div class="dataTables_filter"></div>
-
 	<input type="hidden" id="selectedrow" name="selectedrow" value="" />
-
 	<table id="main-table" width="100%">
 		<thead>
 			<tr>
@@ -29,7 +26,6 @@
 			</tr>
 		</tbody>
 	</table>
-	
 	<div class="dataTables_info"></div>
 	<div class="dataTables_paginate"></div>
 </div>

@@ -14,6 +14,5 @@
 			</a>
 		</li>
 	</ul>
-	
 	<div id="editorPanel"  title="Order Details" class="dialog" style="display:none;"></div>
 </div>
