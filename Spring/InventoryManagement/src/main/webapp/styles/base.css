@@ -1,0 +1,609 @@
+@font-face {
+	font-family: '"Trebuchet MS",Arial,Helvetica,sans-serif';
+	src: url('../type/Rock-webfont.eot');
+	src: local('☺'), url('../type/baddog-Rock.eot?#iefix')
+		format('embedded-opentype'), url('../type/Rock-webfont.woff')
+		format('woff'), url('../type/Rock-webfont.ttf') format('truetype'),
+		url('../type/Rock-webfont.svg#Rockwell') format('svg');
+	font-weight: normal;
+	font-style: normal;
+}
+
+body,html {
+	margin: 0;
+	padding: 0;
+	font: normal normal 12px/ 30px Georgia, "Times New Roman", Times, serif;
+	height: 100%;
+	
+}
+
+
+.content {
+	clear: both;
+	padding-top: 30px;
+	 padding-bottom: 13%;
+	/* height: 100%; */
+}
+
+/*.footer {
+	background: url("../../images/bottom.png") repeat-x scroll 0 bottom
+		transparent;
+	height: 200px;
+}*/
+
+.header {
+	font: normal normal 12px/ 30px Trebuchet MS, sans-serif;
+	background: url("../images/headbg.png") repeat-x scroll 0 0 transparent;
+	height: 108px;
+	float: left;
+	margin-top: -12px;
+	width: 100%;
+	/* padding:10px; */
+}
+
+.login_header {
+	font: normal normal 12px/ 30px Trebuchet MS, sans-serif;
+	background: url("../images/headbg.png") repeat-x scroll 0 0 transparent;
+	height: 108px;	
+	margin-top: -12px;
+	width:100%;
+}
+html {
+	height: 100%;
+}
+
+.upload_header {
+	margin-top: 0;
+	width: 100%;
+}
+
+.upload_fieldset {
+	text-align: center;
+	width: 325px;
+	border-radius: 15px;
+}
+
+.upload_popup {
+	margin: 20px auto;
+}
+
+#logo {
+	background: url("../images/logo.png") no-repeat scroll 0 0 transparent;
+	height: 36px;
+	width: 160px;
+	float: left;
+	margin-left: 10px;
+	margin-top: 30px;
+}
+
+.nav-list {
+	list-style: none outside none;
+	float: left;
+	margin-top: 30px;
+}
+
+.nav-list a {
+	color: #FFF;
+	display: block;
+	/*font: normal normal 32px/ 50px Trebuchet MS, sans-serif;*/
+	padding: 0 32px;
+	text-decoration: none;
+}
+
+.nav-list a:hover {
+	color: #31A1FF;
+}
+
+.nav-list li {
+	float: left;
+}
+
+.nav-list a img {
+	border:0;
+}
+
+table tr:nth-child  (2n ) {
+	background-color: #C7DEEE;
+}
+
+a.dp-choose-date {
+	float: left;
+	width: 16px;
+	height: 16px;
+	padding: 0;
+	margin: 5px 3px 0;
+	display: block;
+	text-indent: -2000px;
+	overflow: hidden;
+	background: url(../images/calendar.png) no-repeat;
+}
+
+a.dp-choose-date.dp-disabled {
+	background-position: 0 -20px;
+	cursor: default;
+}
+
+/* makes the input field shorter once the date picker code
+ * has run (to allow space for the calendar icon
+ */
+input.dp-applied {
+	width: 140px;
+	float: left;
+}
+
+#uploadPopup {
+	display: none;
+	border-radius: 15px;
+	width: 400px;
+	height: 160px;
+	margin-left: -200px;
+	margin-top: -80px;
+	background-color: #87ceeb;
+	border: 1px solid #B0CEE4;
+}
+
+#uploadPopup .close {
+	float: right;
+	border-top-right-radius: 15px;
+	color: #0071A7;
+	font-weight: bold;
+	font-size: 1.1em;
+	text-align: center;
+	cursor: pointer
+}
+
+.footer {
+    background: url("../images/bottom.png") repeat-x scroll 0 0 transparent;
+    float: left;
+    height: 110px;
+    width: 100%;
+}
+
+
+
+#foot_cen {
+    margin: 28px auto 0;
+   /** width: 800px;*/
+}
+
+.footer h6 {
+    background: url("../images/logo.png") no-repeat scroll 0 0 transparent;
+    height: 36px;
+    margin: 0 auto;
+    text-indent: -9999px;
+    width: 160px;
+}
+
+.footer ul {
+    margin: 11px auto 0;
+    width: 350px;
+}
+
+.footer ul li {
+    color: #767676;
+    float: left;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    width: auto;
+}
+
+.footer ul li.space {
+    float: left;
+    padding: 0 6px;
+    width: auto;
+}
+
+.footer p {
+    color: #767676;
+    float: left;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size: 14px;
+    line-height: 18px;
+    margin-top: 10px;
+    text-align: center;
+    width: 100%;
+}
+
+.header ul li {
+    color: #5F5F5F;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    line-height: 35px;
+    text-transform: uppercase;
+    margin-left: 1px;
+}
+
+.header ul li a:hover, .header ul li a.active {
+    background: none repeat scroll 0 0 #272727;
+    color: #31A1FF;
+}
+
+.header ul li a {
+    background: none repeat scroll 0 0 #252525;
+    color: inherit;
+    float: left;
+    padding: 0 12px;
+    width: auto;
+}
+
+.clear {
+	clear: both;
+}
+
+
+.row label {
+	float: left;
+	text-align: right;
+	width: 32%;
+	font-size: 14px;
+	color: #666666;
+	font: small "Trebuchet MS",Arial,Helvetica,sans-serif;
+    padding : 3px 8px 8px 0;
+}
+	
+#menupage {
+	float: inherit;
+	font-size: 12px;
+	font-weight: bold; 
+	color: #090909;
+    padding : 3px 8px 8px 0;
+}
+
+#comboDetails {
+	/*display:none;*/
+}
+
+.txt {
+	border: 1px solid #666666;
+	font-size: 13px;
+	float:left;
+	width: 49%;
+	padding: 4px;
+	color: #212227;
+}
+
+.onlyRead {
+	background-color: #D8D8D8;
+}
+
+.txtImg {
+	 /* border: 1px solid #666666; */
+	 font-size: 13px;
+	 float:left;
+	 width: 49%;
+	 padding: 4px;
+	 color: #212227;
+}
+
+.txtbtn {
+	border: 1px solid #666666;
+	font-size: 13px;
+	float:left;
+	width: 49%;
+	padding: 4px;
+	color: #212227;
+}
+
+.timebtn {
+	border: 1px solid #666666;
+	font-size: 13px;
+	float:left;
+	width: 49%;
+	padding: 4px;
+	color: #212227;
+}
+
+.cbox {
+	/* border: 1px solid #666666;
+	font-size: 13px;
+	float:left;
+	padding: 2px; */
+	border: medium none;
+    margin-top: 4px;
+    width: 16px;
+}
+
+.button_row {
+	margin: 0 auto;
+	text-align: center;
+    width: 65%;
+    margin-left: 58px;
+    margin-top: 5px;
+}
+
+.input_dropdown {
+	border: 1px solid #666666;
+    height: 28px;
+    margin-bottom: 4px;
+    padding: 5px;
+    width: 51%;
+}
+.input_dropdown_day {
+	border: 1px solid #666666;
+   /*  height: 28px; */
+    margin-bottom: 4px;
+    padding: 5px;
+    width: 51%;
+    display:block !important;
+    float: left;
+}
+.input_dropdown_CI{
+	border: 1px solid #666666;
+    height: 28px;
+    margin-bottom: 4px;
+    padding: 5px;
+    width: 51%;
+}
+.input_dropdown_PC{
+	border: 1px solid #666666;
+    height: 28px;
+    margin-bottom: 4px;
+    padding: 5px;
+    width: 51%;
+}
+
+.ui-timepicker-div dl{
+	background: none repeat scroll 0 0 #CCCCCC !important;
+    text-align: left !important;
+}
+
+.menu {
+	font: normal normal 12px/ 30px Trebuchet MS, sans-serif;
+	height: 60px;
+	float: left;
+	margin-top:65px;
+}
+
+.menu ul li {
+    color: #5F5F5F;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    text-transform: uppercase;
+    margin-left: 1px;
+}
+
+.menu ul li a:hover, .header ul li a.active {
+    background: none repeat scroll 0 0 #272727;
+    color: #31A1FF;
+}
+
+
+
+.menu ul li a {
+    background: none repeat scroll 0 0 #252525;
+    color: inherit;
+    float: left;
+    padding: 0 23px;
+    width: auto;
+}
+
+.menu .nav-list {
+	list-style: none outside none;
+	float: left;
+	margin-top: 30px;
+}
+
+.menu .nav-list a {
+	color: #FFF;
+	display: block;
+	/*font: normal normal 32px/ 50px Trebuchet MS, sans-serif;*/
+	padding: 0 32px;
+	text-decoration: none;
+}
+
+.menu .nav-list a:hover {
+	color: #31A1FF;
+}
+
+.menu .nav-list li {
+	float: left;
+}
+
+#quotPan {
+    background: url("../images/pat.png") repeat scroll 0 0 transparent;
+    border-top: 1px solid #C9C9C9;
+    float: left;
+    height: 80px;    
+    margin-top: 50px;
+    margin-bottom: 100px;
+    position: relative;
+    width: 100%;
+}
+#quotPan h3 {
+    float: left;
+    line-height: 45px;
+    margin: 14px 0 0 24px;
+    width: 274px;
+}
+h3 span {
+    color: #3B3B3B;
+    margin-right: 0;
+}
+#quotPan input.txt {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border: 1px solid #CBCBCB;
+    color: #BFBFBF;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    height: 30px;
+    margin: 20px 20px 0 0;
+    padding: 3px 5px;
+    width: 176px;
+}
+#quotPan input.btn {
+    background: url("../images/submitButn.png") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    float: left;
+    font-family: Arial,Helvetica,sans-serif;
+    font-size: 17px;
+    font-weight: bold;
+    height: 42px;
+    margin-top: 18px;
+    text-align: center;
+    width: 113px;
+}
+
+/* table.display tr.odd.row_selected td {
+	background-color: #9FAFD1;
+} */
+.row_selected {
+	background-color: #FF0000;
+	font-weight: bold;
+	font-size: 14px;
+}
+
+.selected {
+	background-color: #FF0000;
+}
+
+.dialog{
+	background: none repeat scroll 0 0 #BCD9E1 !important;
+	padding-top: 10px !important;
+	
+}
+
+.validationErrors{
+	color: red;
+	 text-align: center;
+}
+
+.ui-widget-content {
+    /* color: #5C5C5C !important */
+    color: #5C5C5C !important
+}
+
+.addBtn {
+	background: url("../images/submitButn.png") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    height: 41px;
+    width: 110px;
+    font-weight: bold;
+}
+
+.hideBtn {
+    height: 31px;
+    margin-top: 4px;
+    width: 16%;
+}
+
+.yesBtn {
+    height: 31px;
+    margin-top: 4px;
+    width: 16%;
+}
+
+.hideCheckId{
+	display: none;
+}
+
+.hideZPk{
+	display: none;
+}
+
+.yesnoComboBtn {
+    height: 31px;
+    margin-top: 4px;
+    width: 16%;
+}
+
+.yesnoIphoneBtn {
+    height: 31px;
+    margin-top: 4px;
+    width: 16%;
+}
+
+.yesnoIpadBtn {
+    height: 31px;
+    margin-top: 4px;
+    width: 16%;
+}
+.required {
+	color: #F00;
+}
+
+.listBox{
+	float: right;
+    margin-bottom: 10px;
+    margin-right: 25px;
+}
+
+.listBox select{
+	height:100px;
+	width: 152px;
+	float:left;
+	padding :5px;
+}
+
+.listBox h2
+{
+  color: #eee;
+  background-color:  #6facd5;
+  font-size: 12px;
+  margin: 0;
+  text-align: center;
+}
+
+
+/* css for timepicker */
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div .ui_tpicker_time_label { float: left; clear:left; padding: 0 0 0 5px; }
+
+.ui-timepicker-div .ui_tpicker_hour_label, .ui-timepicker-div .ui_tpicker_minute_label { float: left; clear:left; padding: 0 0 0 5px;margin-top:-9px; }
+
+.ui-timepicker-div dl dd { margin: 0 10px 10px 45%; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; padding: 0 5px 0 0; }
+.ui-timepicker-rtl dl dt{ float: right; clear: right; }
+.ui-timepicker-rtl dl dd { margin: 0 45% 10px 10px; }
+
+.ui_tpicker_hour div a , .ui_tpicker_minute div a , .ui-datepicker-buttonpane button{
+	background: url("../images/ui-bg_glass_45_0078ae_1x400.png") repeat-x scroll 50% 50% #0078AE;
+    color: #FFFFFF;
+    font-weight: normal;
+    border: none;
+}
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+border: 1px solid #acdd4a;
+background: #6eac2c url("../images/ui-bg_gloss-wave_50_6eac2c_500x100.png") 50% 50% repeat-x;
+font-weight: normal;
+color: #ffffff;
+}
+
+.listBox{
+	float: right;
+    margin-bottom: 10px;
+    margin-right: 53px;
+}
+
+.listBox select{
+	height:100px;
+	width: 152px;
+	float:left;
+	padding :5px;
+}
+
+.listBox h2
+{
+  color: #eee;
+  background-color:  #6facd5;
+  font-size: 12px;
+  margin: 0;
+  text-align: center;
+}
+
+
+
+
+  

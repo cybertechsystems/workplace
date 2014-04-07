@@ -1,0 +1,263 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE sqlMap
+  PUBLIC "-//ibatis.apache.org//DTD SQL Map 2.0//EN"
+  "http://ibatis.apache.org/dtd/sql-map-2.dtd">
+
+<sqlMap namespace="food_order">
+
+	<resultMap id="orders" class="com.fish_co.admin.beans.food_order.Orders">
+        <result property="checkId" column="checkId" />
+        <result property="orderNum" column="orderNum" />        
+        <result property="chkOpenTime" column="chkOpenTime" />        
+        <result property="ipadId" column="ipadId" />
+        <result property="isOpen" column="isOpen" />
+        <result property="isUpdated" column="isUpdated" />
+        <result property="remark" column="remark" />        
+    </resultMap>
+    
+    <select id="create-order-item" resultClass="java.lang.String">
+        SELECT MAX(LAST_INSERT_ID(`checkId`)) FROM `checks`
+    </select>
+    
+    <select id="get-next-order-id" resultClass="java.lang.String">
+         SELECT MAX(LAST_INSERT_ID(`checkId`)) FROM `checks`
+    </select>
+    
+    <insert id="create-order" parameterClass="com.fish_co.admin.beans.food_order.Orders">
+        INSERT INTO `checks`(
+          `checkId`,
+          `orderNum`,
+          `chkOpenTime`
+        ) VALUES(#checkId#,#orderNum#,#chkOpenTime#)
+        
+    </insert>
+    
+    <insert id="create-order-item-2" parameterClass="java.lang.String">
+        INSERT INTO `checks`(
+		`checkId`,
+		`employeeNo`,
+		`transTypeNo`,
+		`tableNo`,
+		`rvcNo`,
+		`chkOpenTime`,
+		`pcNo`,
+		`coverNo`,
+		`salesTypeId`,
+		`ipadId`,
+		`isOpen`,
+		`isUpdated`,
+		`remark`
+        ) VALUES(#value#,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL)
+    </insert>
+    
+    <select id="retrieve-order-item" resultMap="food_order.orders">
+        SELECT
+        a.`checkId`,
+        a.`checkId`,
+        a.`orderNum`,		
+		a.`chkOpenTime`,		
+		a.`ipadId`,
+		a.`isOpen`,
+		a.`isUpdated`,
+		a.`remark`
+        FROM `checks` AS a  
+        <dynamic prepend="WHERE ">
+	        <isNotNull property="search" >
+			 	 a.`chkOpenTime` like #search#
+			</isNotNull>
+		</dynamic>
+         order by
+        
+        <isEqual property="orderCol" compareValue="99">
+			a.`checkId`
+		</isEqual>   
+ 
+ 		<isNotEqual property="orderCol" compareValue="99">
+			 #orderCol#
+		</isNotEqual>
+		
+		<isEqual property="orderBy" compareValue="desc">
+			 desc
+		</isEqual>  
+		
+		<isEqual property="orderBy" compareValue="asc">
+			 asc
+		</isEqual>   
+        LIMIT #start#, #size#
+    </select>
+
+     <select id="retrieve-a-order" resultMap="food_order.orders" parameterClass="java.lang.String">
+        SELECT
+        a.`checkId`,
+        a.`orderNum`,		
+		a.`chkOpenTime`,		
+		a.`ipadId`,
+		a.`isOpen`,
+		a.`isUpdated`,
+		a.`remark`
+        FROM `checks` AS a  WHERE a.`checkId` = #checkId#
+    </select>
+    
+    <delete id="delete-order" parameterClass="java.lang.String">
+        DELETE FROM `checks` WHERE `checkId` = #checkId#
+    </delete>
+    
+    <update id="update-orders" parameterClass="com.fish_co.admin.beans.food_order.Orders">
+		UPDATE `checks` 
+		SET `checkId` = #checkId#,`orderNum` = #orderNum#, `chkOpenTime` = #chkOpenTime#
+		,`ipadId` = #ipadId#,`isOpen` = #isOpen#,`isUpdated` = #isUpdated#
+		WHERE `checkId` = #checkId#
+    </update>
+
+    <update id="update-order-item" parameterClass="com.fish_co.admin.beans.Data">
+        UPDATE `checks` SET        
+        <isEqual property="columnName" compareValue="chkOpenTime">`chkOpenTime` = #value#</isEqual>       
+        <isEqual property="columnName" compareValue="ipadId">`ipadId` = #value#</isEqual>
+        <isEqual property="columnName" compareValue="isOpen">`isOpen` = #value#</isEqual>
+        <isEqual property="columnName" compareValue="isUpdated">`isUpdated` = #value#</isEqual>
+        <isEqual property="columnName" compareValue="remark">`remark` = #value#</isEqual>
+        WHERE `checkId` = #primaryKey#
+    </update>
+    
+    <delete id="delete-order-item" parameterClass="java.lang.String">
+        DELETE FROM `checks` WHERE `checkId` = #value#
+    </delete>
+    
+    <resultMap id="details" class="com.fish_co.admin.beans.food_order.Details">
+        <result property="detailId" column="detailId" />
+        <result property="checkId" column="checkId" />
+        <result property="menuItemNo" column="menuItemNo" />
+        <result property="quantity" column="quantity" />
+        <result property="isUpdated" column="isUpdated" />
+        <result property="chkOpenTime" column="timestamp" />
+        <result property="remark" column="remark" />
+        <result property="isCondiment" column="isCondiment" />
+    </resultMap>
+    
+    <select id="create-order-detail-item" resultClass="java.lang.String">
+        SELECT MAX(LAST_INSERT_ID(`detailId`)) FROM `details`
+    </select>
+    
+     <select id="retrieve-order-count" resultClass="java.lang.String" parameterClass="com.fish_co.admin.beans.Paging">
+        SELECT
+        count(*)
+        FROM `checks` AS a 
+        <dynamic prepend="WHERE ">
+	        <isNotNull property="search" >
+			 	 a.`checkId` like #search#
+			</isNotNull>
+		</dynamic>
+    </select>
+    
+    <select id="retrieve-order-detail-item" resultMap="food_order.details" parameterClass="com.fish_co.admin.beans.Paging">
+        SELECT
+        a.`detailId`,
+        a.`checkId`,
+        a.`menuItemNo`,
+        a.`quantity`,
+        a.`isUpdated`,
+        a.`timestamp`,
+        a.`remark`,
+        a.`isCondiment`
+        FROM `details` AS a 
+	
+		<dynamic prepend="WHERE ">
+	        <isNotNull property="checkID" >
+			 	 a.`checkId` like #checkID#
+			</isNotNull>
+		</dynamic>
+         order by
+        
+ 		<isNotEqual property="orderCol" compareValue="99">
+			 #orderCol#
+		</isNotEqual>
+		
+		<isEqual property="orderBy" compareValue="desc">
+			 desc
+		</isEqual>  
+		
+		<isEqual property="orderBy" compareValue="asc">
+			 asc
+		</isEqual>   
+        LIMIT #start#, #size#
+    </select>
+    
+    <select id="retrieve-order-detail-count" resultClass="java.lang.String" parameterClass="com.fish_co.admin.beans.Paging">
+        SELECT
+        count(*)
+        FROM `details` AS a 
+        <dynamic prepend="WHERE ">
+	       <isNotNull property="checkID" >
+			 	a.`checkId` like #checkID#
+			</isNotNull>
+		</dynamic>
+    </select>
+    
+    <insert id="create-order-detail-item-2" parameterClass="java.lang.String">
+        INSERT INTO `details`(
+		`detailId`,
+		`checkId`,
+		`menuItemNo`,
+		`quantity`,
+		`isUpdated`,		
+		`remark`,
+		`isCondiment`
+        ) VALUES(#detailId#,#checkId#,#menuItemNo#,#quantity#,now(),NULL,NULL)
+    </insert>
+    
+    <select id="retrieve-order-detail-item_12" parameterClass="java.lang.String" resultMap="food_order.details">
+        SELECT
+        a.`detailId`,
+        a.`checkId`,
+        a.`menuItemNo`,
+        a.`quantity`,
+        a.`isUpdated`,
+        a.`timestamp`,
+        a.`remark`,
+        a.`isCondiment`
+        FROM `details` AS a
+        WHERE  a.`checkId` like #CheckID#
+    </select>
+    
+    <select id="retrieve-a-order-detail-item" parameterClass="java.lang.String" resultMap="food_order.details">
+        SELECT
+        a.`detailId`,
+        a.`checkId`,
+        a.`menuItemNo`,
+        a.`quantity`,
+        a.`isUpdated`,
+        a.`timestamp`,
+        a.`remark`,
+        a.`isCondiment`
+        FROM `details` AS a
+        WHERE  a.`detailId` like #value#
+    </select>
+
+    <update id="update-order-detail-item" parameterClass="com.fish_co.admin.beans.Data">
+        UPDATE `details` SET
+        <isEqual property="columnName" compareValue="checkId">`checkId` = #value#</isEqual>
+        <isEqual property="columnName" compareValue="menuItemNo">`menuItemNo` = #value#</isEqual>
+        <isEqual property="columnName" compareValue="quantity">`quantity` = #value#</isEqual>
+        <isEqual property="columnName" compareValue="isUpdated">`isUpdated` = #value#</isEqual>
+        <isEqual property="columnName" compareValue="remark">`remark` = #value#</isEqual>
+        <isEqual property="columnName" compareValue="isCondiment">`isCondiment` = #value#</isEqual>
+        WHERE `detailId` = #primaryKey#
+    </update>
+    
+     <update id="update-orders-detail" parameterClass="com.fish_co.admin.beans.food_order.Details">
+		UPDATE `details` 
+		SET `checkId` = #checkId#,`menuItemNo` = #menuItemNo#, `isCondiment` = #isCondiment#, `quantity` = #quantity#
+		,`isUpdated` = #isUpdated#,`timestamp` = #timestamp#
+		WHERE `detailId` = #detailId#
+    </update>
+    
+    <delete id="delete-order-detail-item" parameterClass="java.lang.String">
+        DELETE FROM `details` WHERE `detailId` = #value#
+    </delete>
+    
+    <select id="retrieve-detailId" resultClass="java.lang.Integer" parameterClass="java.lang.String">
+        SELECT
+        count(*)
+        FROM `details` AS a  WHERE a.`checkId` = #checkId#
+    </select>
+</sqlMap>

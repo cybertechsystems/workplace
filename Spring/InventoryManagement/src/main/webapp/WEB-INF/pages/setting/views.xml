@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN" 
+"http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+<tiles-definitions>
+    <!-- For Page Submit -->  
+    
+    <definition extends="layout" name="/settinglist">
+        <put-attribute name="content" value="settinglist" />
+        <put-attribute name="menu" value="/WEB-INF/pages/setting/menu.jsp" />
+    </definition>
+    <!-- For AJAX -->
+   
+    <definition name="settinglist" template="/WEB-INF/pages/setting/list.jsp">
+    </definition>
+    
+     <definition name="settingadd" template="/WEB-INF/pages/setting/save.jsp">
+    </definition>
+    
+</tiles-definitions>

@@ -1,0 +1,1 @@
+This project template is a stack of JSP, Spring and ibatis.
