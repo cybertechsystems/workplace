@@ -1,1 +1,0 @@
-This project template is a stack of Primefaces, Spring and Hibernate. It has Login and CRUD feature
