@@ -1,0 +1,85 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:form>
+		<div id="colTwo">
+			<h4 class="headerMenu">Edit Order :</h4>
+			<h:panelGrid id="registerGrid" columns="3" cellpadding="5"
+				styleClass="registerpanel">
+
+				<h:outputLabel class="textlabel" for="orderNum"
+					value="Order Number:">
+					<span class="required">*</span>
+				</h:outputLabel>
+				<p:inputText id="orderNum" value="#{orderBean.order.orderNum}"
+					required="true" label="orderNum">
+					<f:validator binding="#{orderDetailValidator}" />
+					<p:ajax event="blur" update="orderNumMsg" />
+				</p:inputText>
+				<p:message id="orderNumMsg" for="orderNum" showSummary="true"
+					showDetail="false" />
+
+				<h:outputLabel class="textlabel" for="chkOpenTime"
+					value="Check Open Time:">
+					<span class="required">*</span>
+				</h:outputLabel>
+				<p:calendar id="chkOpenTime" value="#{orderBean.order.chkOpenTime}"
+					pattern="yyyy-MM-dd" required="true" label="chkOpenTime">
+					<p:ajax event="blur" update="chkOpenTimeMsg" />
+				</p:calendar>
+				<p:message id="chkOpenTimeMsg" for="chkOpenTime" showSummary="true"
+					showDetail="false" />
+
+				<h:outputLabel class="textlabel" for="ipadId" value="Ipad ID:">
+					<span class="required">*</span>
+				</h:outputLabel>
+				<p:inputText id="ipadId" value="#{orderBean.order.ipadId}"
+					required="true" label="ipadId">
+					<f:validator binding="#{orderDetailValidator}" />
+					<p:ajax event="blur" update="ipadIdMsg" />
+				</p:inputText>
+				<p:message id="ipadIdMsg" for="ipadId" showSummary="true"
+					showDetail="false" />
+
+				<h:outputLabel class="textlabel" for="isOpen" value="Is Open:"></h:outputLabel>
+				<h:selectBooleanCheckbox id="isOpen"
+					value="#{orderBean.order.isOpen}" required="true" label="isOpen"
+					styleClass="inputcheckbox">
+					<p:ajax event="blur" update="isOpenMsg" />
+				</h:selectBooleanCheckbox>
+				<p:message id="isOpenMsg" for="isOpen" showSummary="true"
+					showDetail="false" />
+
+
+				<h:outputLabel class="textlabel" for="isUpdated" value="Is Updated:"></h:outputLabel>
+				<h:selectBooleanCheckbox id="isUpdated"
+					value="#{orderBean.order.isUpdated}" required="true"
+					label="isUpdated" styleClass="inputcheckbox">
+					<p:ajax event="blur" update="isUpdatedMsg" />
+				</h:selectBooleanCheckbox>
+				<p:message id="isUpdatedMsg" for="isUpdated" showSummary="true"
+					showDetail="false" />
+
+				<h:outputLabel class="textlabel" for="remark" value="Remark:">
+					<span class="required">*</span>
+				</h:outputLabel>
+				<p:inputTextarea cols="20" rows="4" id="remark"
+					value="#{orderBean.order.remark}" required="true" label="remark"
+					autoResize="false" maxlength="30">
+					<p:ajax event="blur" update="remarkMsg" />
+				</p:inputTextarea>
+				<p:message id="remarkMsg" for="remark" showSummary="true"
+					showDetail="false" />
+
+
+				<p:commandButton value="Save" update=":contentContainer,:menuPanel"
+					styleClass="saveBtn" actionListener="#{orderBean.save}" />
+				<p:commandButton value="Cancel"
+					update=":contentContainer,:menuPanel" styleClass="cancelBtn"
+					actionListener="#{orderBean.cancel}" immediate="true" />
+			</h:panelGrid>
+		</div>
+	</h:form>
+</ui:composition>

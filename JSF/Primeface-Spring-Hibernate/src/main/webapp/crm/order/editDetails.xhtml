@@ -1,0 +1,74 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:form>
+		<div id="colTwo">
+			<h4 class="headerMenu">Edit Order detail :</h4>
+			<h:panelGrid id="registerGrid" columns="3" cellpadding="5"
+				styleClass="registerpanel">
+				<h:outputLabel class="textlabel" for="menuItemNo"
+					value="Menu Item Number:">
+					<span class="required">*</span>
+				</h:outputLabel>
+				<p:inputText id="menuItemNo" value="#{orderBean.details.menuItemNo}"
+					required="true" label="menuItemNo">
+					<f:validator binding="#{orderDetailValidator}" />
+					<p:ajax event="blur" update="menuItemNoMsg" />
+				</p:inputText>
+				<p:message id="menuItemNoMsg" for="menuItemNo" showSummary="true"
+					showDetail="false" />
+
+				<h:outputLabel class="textlabel" for="quantity" value="Quantity:">
+					<span class="required">*</span>
+				</h:outputLabel>
+				<p:inputText id="quantity" value="#{orderBean.details.quantity}"
+					required="true" label="quantity">
+					<f:validator binding="#{orderDetailValidator}" />
+					<p:ajax event="blur" update="quantityMsg" />
+				</p:inputText>
+				<p:message id="quantityMsg" for="quantity" showSummary="true"
+					showDetail="false" />
+
+				<h:outputLabel class="textlabel" for="isUpdated" value="Is Updated:"></h:outputLabel>
+				<h:selectBooleanCheckbox id="isUpdated"
+					value="#{orderBean.details.isUpdated}" required="true"
+					label="isUpdated" styleClass="inputcheckbox">
+					<p:ajax event="blur" update="isUpdatedMsg" />
+				</h:selectBooleanCheckbox>
+				<p:message id="isUpdatedMsg" for="isUpdated" showSummary="true"
+					showDetail="false" />
+
+				<h:outputLabel class="textlabel" for="chkOpenTime"
+					value="Check Open Time:">
+					<span class="required">*</span>
+				</h:outputLabel>
+				<p:calendar id="chkOpenTime"
+					value="#{orderBean.details.chkOpenTime}" pattern="yyyy-MM-dd"
+					required="true" label="chkOpenTime">
+					<p:ajax event="blur" update="chkOpenTimeMsg" />
+				</p:calendar>
+				<p:message id="chkOpenTimeMsg" for="chkOpenTime" showSummary="true"
+					showDetail="false" />
+
+				<h:outputLabel class="textlabel" for="remark" value="Remark:">
+					<span class="required">*</span>
+				</h:outputLabel>
+				<p:inputTextarea cols="20" rows="4" id="remark"
+					value="#{orderBean.details.remark}" required="true" label="remark"
+					autoResize="false" maxlength="30">
+					<p:ajax event="blur" update="remarkMsg" />
+				</p:inputTextarea>
+				<p:message id="remarkMsg" for="remark" showSummary="true"
+					showDetail="false" />
+
+				<p:commandButton value="Save" update=":contentContainer,:menuPanel"
+					styleClass="saveBtn" actionListener="#{orderBean.saveDetails}" />
+				<p:commandButton value="Cancel"
+					update=":contentContainer,:menuPanel" styleClass="cancelBtn"
+					actionListener="#{orderBean.cancelDetails}"/>
+			</h:panelGrid>
+		</div>
+	</h:form>
+</ui:composition>

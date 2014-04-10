@@ -1,0 +1,43 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:ui="http://java.sun.com/jsf/facelets">
+	<h:head>
+		<link rel="stylesheet" type="text/css" href="../../styles/base.css" />
+		<link rel="stylesheet" type="text/css"
+			href="../../styles/datatable.css" />
+	</h:head>
+	<h:body>
+		<h:form id="form">
+
+			<p:dataTable var="user" value="#{userBean.userList}"
+				id="lazyDataTable" editable="true" selectionMode="single"
+				rowKey="#{user.id}" paginator="true"
+				paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+				tableStyleClass="test" selection="#{userBean.user}"
+				rowsPerPageTemplate="5,10,15" rows="15">
+
+				<p:ajax event="rowSelect" />
+				<p:ajax event="rowEdit" listener="#{userBean.editUser}" />
+				<f:facet name="header">
+		            Click "View" button after selecting a row to see details
+		        </f:facet>
+				<p:column headerText="dfgd">
+		            #{user.login}
+		        </p:column>
+
+				<p:column headerText="Model" style="width:30%">
+					<p:cellEditor>
+						<f:facet name="output">
+							<h:outputText value="#{user.login}" />
+						</f:facet>
+						<f:facet name="input">
+							<p:inputText value="#{user.login}" style="width:100%" />
+						</f:facet>
+					</p:cellEditor>
+				</p:column>
+			</p:dataTable>
+		</h:form>
+	</h:body>
+</ui:composition>

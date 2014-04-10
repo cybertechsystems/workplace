@@ -1,0 +1,483 @@
+body, select {
+ 	color: #A1A1A1;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size: 13px;
+    margin: 5px 0;
+}
+
+/* Menu */
+#login-form {
+    margin: 9% 8% 3% 29%;
+}
+.detailClick{
+	background-color: #2582A4;
+    border-color: #669966 #336633 #336633 #669966;
+    border-style: solid;
+    border-width: 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: "trebuchet MS";
+    margin-left: 450px;
+    width: 150px;
+    padding: 2px;
+	text-align:center;
+	margin-bottom: 5px;
+}
+
+.goRight{
+	background: url("../images/img09.gif") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+	float: right;
+    margin-top: -54px;
+    padding: 0 101px;
+}
+
+#footer {
+    background: url("../images/img11.gif") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    bottom: -1px;
+    clear: both;
+    margin: 0 auto;
+    padding-top: 40px;
+    position: absolute;
+    width: 100%;
+}
+
+.btn{
+	background-color: #2582A4;
+    border-color: #669966 #336633 #336633 #669966;
+    border-style: solid;
+    border-width: 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: "trebuchet MS" !important;
+    font-size: 13px !important;
+    text-shadow: none;
+}
+
+#login-content {
+    border: 1px solid #E2E2E2;
+    margin: 0 auto;
+    width: 428px;
+    align-self: center
+}
+
+#menu {
+    background: url("../images/img02.gif") no-repeat scroll left bottom rgba(0, 0, 0, 0);
+    color: #2582A4;
+    display: inline;
+    float: left;
+    height: 37px;
+    list-style: none outside none;
+    margin: 0;
+    padding: 0 0 0 23px;
+    width: 600px;
+}
+p, ol, ul {
+    text-align: justify;
+}
+
+
+#menu li {
+	display: inline;
+}
+
+.loginField {
+	padding:5px;
+    margin: 8px 5px 8px 55px;
+}
+
+.loginField .ui-inputfield {
+    margin-left: 0;
+    width: 60%;
+}
+
+.editBtn{
+	background: url("../images/edit-icon.png");
+	cursor: pointer;
+    width: 126px;
+    height: 41px;
+    border: none;
+}
+.detailsBtn{
+	margin-top: 2px;
+}
+
+.editBar{
+	padding : 10px 10px;
+}
+.saveBtn {
+	float: right;
+    background-color: #2582A4;
+    border-color: #669966 #336633 #336633 #669966;
+    border-style: solid;
+    border-width: 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: "trebuchet MS" !important;
+    font-size: 12px !important;
+    text-shadow: none;
+}
+.cancelBtn{
+	background-color: #2582A4;
+    border-color: #669966 #336633 #336633 #669966;
+    border-style: solid;
+    border-width: 1px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font-family: "trebuchet MS" !important;
+    font-size: 12px !important;
+    text-shadow: none;
+}
+.textlabel {
+	display: block;
+	text-align: right;
+}
+
+#menu a {
+	display: block;
+	float: left;
+	height: 27px;
+	padding: 10px 15px 0px 15px;
+	text-decoration: none;
+	font-size: 14px;
+	color: #FFFFFF;
+}
+
+#menu a:hover {
+	background: #A4B74C url(../images/img04.gif) repeat-x;
+}
+	
+.ui-paginator-top {
+	display:none;
+}
+
+.ui-editable-column {
+	padding: 0px 10px;
+}
+
+.ui-datatable th, .ui-datatable tfoot td {
+	padding: 3px 10px;
+}
+
+.ui-datatable .ui-datatable-data td, .ui-datatable .ui-datatable-data-empty td {
+    border-color: inherit;
+    border-style: solid;
+    border-width: 1px;
+    margin: 0;
+    overflow: hidden;
+    padding: 0 10px;
+}
+
+.ui-datatable-odd {
+    background: none repeat scroll 0 0 #F3F6F9;
+}
+
+.ui-widget {
+    font-family: Arial,sans-serif;
+    font-size: 11px;
+}
+
+.ui-state-highlight, .ui-widget-content .ui-state-highlight, .ui-widget-header .ui-state-highlight {
+    background: -moz-linear-gradient(center top , rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0)) repeat scroll 0 0 #D7D7D7;
+    border: 1px solid #666666;
+    color: #FFFFFF;
+    text-shadow: 1px 1px 1px #333333;
+}
+
+.ui-state-hover a, .ui-state-hover a:hover {
+    color: #2F556A;
+    text-decoration: none;
+}
+
+.goRight h3 {
+    font-size: 18px;
+    padding: 24px 60px 1px 74px;
+}
+
+h1, h2, h3, h4, h5, h6 {
+	color: #2582A4;
+	margin: 0;
+}
+
+p, ol, ul {
+	text-align: justify;
+}
+
+strong {
+	font-weight: bold;
+	color: #808080;
+}
+
+a:hover {
+	text-decoration: none;
+}
+
+.image {
+	float: left;
+	margin: 3px 0 0 0;
+	padding: 0;
+}
+
+.indent {
+	margin-left: 125px;
+}
+
+
+#header {
+    background: url("../images/img01.gif") repeat-x scroll 0 0 #BECF74;
+    border-bottom: 3px solid #FFFFFF;
+    height: 37px;
+   	margin: 11% 5%;
+}
+
+#menuu {
+    margin: 0 auto;
+    width: 928px;
+}
+
+#databody{
+ 	margin: 0 auto;
+    width: 928px;
+	background: none repeat scroll 0 0 #FCFCFC;
+}
+
+#colTwo {
+    background: url("../images/img09.gif") repeat-x scroll 0 0 rgba(0, 0, 0, 0);
+    margin: -11% 5%;
+}
+
+#colTwo h3{
+	font-size: 18px;
+    margin-left: 20px;
+    margin-top: 0;
+}
+
+#colTwo h4{
+	font-size: 16px;
+   	margin-left: 18px;
+}
+
+.ui-datatable table {	
+    border-collapse: collapse;
+    color: #333333;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size: 11px;
+    overflow-y: auto;
+    text-align: center;
+}
+
+.registerpanel {
+    margin: 0 auto;
+}
+.ui-datatable table thead tr th {
+    background: none repeat scroll 0 0 #E2E2E2;
+    font-size: 12px;
+    height: 20px;
+}
+.ui-datatable table td, table th {
+    border: 1px solid #CCCCCC !important;
+    height: 23px;
+    padding: 3px 3px 3px 5px;
+    vertical-align: middle;
+}
+
+.ui-state-default {
+    box-shadow: none;
+}
+
+#endPanel {
+ 	background: url("../images/img04.gif") no-repeat scroll right top rgba(0, 0, 0, 0);
+    color: #2582A4;
+    float: right;
+    font-size: 14px;
+    height: 28px;
+    margin: 0;
+    padding: 9px 25px 0 0;
+}
+
+.searchdetails {
+    background-image: url(images/search.png)
+}
+
+.text{
+	padding: 0 20px 0 0;
+}
+.clr {
+    clear: both;
+    font-size: 0;
+    line-height: 0;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.clear {
+	clear: both;
+}
+
+.row label {
+	float: left;
+	text-align: right;
+	width: 32%;
+	font-size: 14px;
+	color: #666666;
+	font: small "Trebuchet MS",Arial,Helvetica,sans-serif;
+    padding : 3px 8px 8px 0;
+}
+
+.addBtn {
+	background: url("../images/submitBtn.png") no-repeat scroll 0 0 transparent;
+    border: 0 none;
+    color: #FFFFFF;
+    cursor: pointer;
+    height: 41px;
+    width: 110px;
+    font-weight: bold;
+}
+
+.button_row {
+	margin: 0 auto;
+	text-align: center;
+    width: 65%;
+    margin-left: 58px;
+    margin-top: 5px;
+}
+
+#contentContainer {
+	margin: 0 auto;
+}
+
+#menuPanel {
+    margin: 0 auto;
+}
+
+.editprofile {
+    padding: 10px;
+    color: #151525;
+}
+
+#logout {
+    background: url("../images/img03.gif") no-repeat scroll right top rgba(0, 0, 0, 0);
+    color: #2582A4;
+    float: right;
+    font-size: 14px;
+    height: 28px;
+    margin: 0;
+    padding: 9px 25px 0 0;
+}
+
+.userlist {
+    color: #545454;
+    padding: 10px;
+}
+
+.top {
+    border-bottom: 1px solid #EEEEEE;
+    border-top: 1px solid #EEEEEE;
+    float: left;
+    font-family: "Trebuchet MS",Arial,Helvetica,sans-serif;
+    font-size: 20px !important;
+    font-weight: bold;
+    line-height: 18px;
+    margin: 15px 0 30px 41px;
+    padding: 6px 0 6px 10px;
+    text-transform: uppercase;
+    width: 91%;
+}
+
+.ui-inputfield{
+	 width: 99%;
+}
+.inputcheckbox {
+	margin: 0 auto;
+}
+
+.required {
+	color: #F00;
+}
+.loginheader {
+    margin: 11% 0 3%;
+    text-align: center;
+}
+
+.ui-message-info, .ui-message-error, .ui-message-warn, .ui-message-fatal {
+    border: 1px solid;
+    margin: 0 auto;
+}
+
+.ui-messages-info, .ui-message-info {
+    background-color: #D9EDF7;
+    border-color: #BCE8F1;
+    color: #FA8072;
+    height: 12px;
+    margin-left: 32%;
+    margin-top: 11%;
+    position: absolute;
+    display: none;
+}
+.errorMessage {
+	background-color: #D9EDF7;
+    border-color: #BCE8F1;
+    color: #FA8072;
+    font-size: 13px;
+    margin-left: -39%;
+    margin-top: -12%;
+    height: 26px;
+    text-align: center;
+    list-style-type: none;
+}
+
+.ui-messages-info-summary, .ui-messages-warn-summary, .ui-messages-error-summary, .ui-messages-fatal-summary, .ui-message-info-summary, .ui-message-warn-summary, .ui-message-error-summary, .ui-message-fatal-summary {
+    font-weight: bold;
+    margin-left: 3px;
+}
+
+.ui-messages-error, .ui-message-error {
+    background-color: #F2DEDE;
+    border-color: #EED3D7;
+    color: #B94A48;
+}
+
+#logout a {
+    color: #FFFFFF;
+    font-size: 14px;
+}
+
+.ui-widget-header .ui-icon {
+   /*  background-image: url("/dcvps-admin/javax.faces.resource/images/ui-icons_847e71_256x240.png.jsf?ln=primefaces-south-street"); */
+}
+
+.menuus{
+    color: #FFFFFF;
+    display: block;
+    float: left;
+    font-size: 14px;
+    height: 27px;
+    padding: 10px 15px 0;
+    text-decoration: none;
+}
+.forgotpassword{
+	color: #717171;
+    font-size: 13px;
+    padding: 0 60px;
+    text-decoration: underline;
+}
+
+.left{
+}
+
+.titleimage img{
+	margin: 0 5%;
+    width: 11%;
+    position: absolute;
+}
+
+.titleimage {
+    margin-bottom: -8%;
+}
+
+
+.titleimage h1{
+	margin: 0 24%;
+    text-align: center;
+    padding-top: 1%;
+}
