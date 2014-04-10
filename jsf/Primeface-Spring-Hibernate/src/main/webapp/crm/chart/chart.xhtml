@@ -1,0 +1,48 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:f="http://java.sun.com/jsf/core">
+      <script type="text/javascript"
+        src="../../script/highcharts.js"></script>
+      <script type="text/javascript"
+        src="http://www.highcharts.com/highslide/highslide-full.min.js"></script>
+      <script type="text/javascript"
+        src="http://www.highcharts.com/highslide/highslide.config.js"
+        charset="utf-8"></script>
+      <link rel="stylesheet" type="text/css"
+        href="http://www.highcharts.com/highslide/highslide.css" />
+      <script type="text/javascript"
+        src="../../script/order_chart.js"></script>
+	<h:body>
+		<h:form id="chartform">
+			<p:outputPanel id="chartpanel">
+	            <h:panelGrid rows="2" cellpadding="4" cellspacing="4" style="margin-left:50px;">
+	            <h:outputText value="Last week datas :" style="font-size:16px;"/>
+	            <p:dataTable value="#{orderBean.historyData}" var="item"
+	              rows="10" paginator="true" paginatorAlwaysVisible="false">
+	              <p:column headerText="Date">
+	                <h:outputText value="#{item.time}">
+	                  <f:convertDateTime dateStyle="short" />
+	                </h:outputText>
+	              </p:column>
+	              <p:column headerText="Value">
+	                <h:outputText value="#{item.value}">
+	                  <f:convertNumber />
+	                </h:outputText>
+	              </p:column>
+	            </p:dataTable>
+	            </h:panelGrid>
+	            <h:panelGroup id="historyChartPanel">
+	              <div id="historyChart"/>
+	              <script type="text/javascript">
+	              	var title = '<h:outputText value="Order Chart" />';
+	              	var yTitle = '<h:outputText value="Order Value" />';
+	              	var data = eval('<h:outputText value="#{orderBean.historyChartData}"/>');
+	              	OrderHistory.drawChart('historyChart', title, yTitle, data);
+	              </script>
+	            </h:panelGroup>	
+			</p:outputPanel>
+		</h:form>
+	</h:body>
+</ui:composition>
